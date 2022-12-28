@@ -1,36 +1,38 @@
-import React, { useState } from 'react'
-import { Link, useHistory,Redirect } from 'react-router-dom'
-import { Row, Col, Form, Input, Button } from 'antd'
-import httpRequest from '@/utils/axios'
+import React, { useState } from "react";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import { Row, Col, Form, Input, Button } from "antd";
+import httpRequest from "@/utils/axios";
 
-import LeftContent from './leftContent'
+import LeftContent from "./leftContent";
 
-const endpoint = 'api/login'
+const endpoint = "api/login";
 
 export default function Login() {
-  const [form] = Form.useForm()
-  const { push } = useHistory()
-  const [loading, setLoading] = useState(false)
+  const [form] = Form.useForm();
+  const { push } = useHistory();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
     form.validateFields().then(async (res) => {
-      setLoading(true)
+      setLoading(true);
       await httpRequest({
-        method: 'post',
+        method: "post",
         url: endpoint,
         data: res,
       })
         .then((response) => {
-          window.localStorage.setItem('token', response?.data?.data?.token)
-          push('/')
+          console.log(response);
+          window.localStorage.setItem("token", response?.data?.data?.token);
+          window.localStorage.setItem("data", response?.data?.data?.token);
+          push("/");
         })
         .finally(() => {
-          setLoading(false)
-        })
-    })
-  }
-  if(window?.localStorage.getItem('token')){
-    return <Redirect to="/" />
+          setLoading(false);
+        });
+    });
+  };
+  if (window?.localStorage.getItem("token")) {
+    return <Redirect to="/" />;
   }
   return (
     <Row gutter={[32, 0]} className="hp-authentication-page">
@@ -125,5 +127,5 @@ export default function Login() {
         </Row>
       </Col>
     </Row>
-  )
+  );
 }

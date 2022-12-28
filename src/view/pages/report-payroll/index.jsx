@@ -165,6 +165,9 @@ export default function ReportPayroll() {
       title: "Tanggal Penggajian",
       dataIndex: "tgl_penggajian",
       key: "tgl_penggajian",
+      render: (_record, index) => {
+        return <span>{moment(_record).format("DD MMMM yyyy")}</span>;
+      },
     },
     {
       title: "Total Tunjangan",
