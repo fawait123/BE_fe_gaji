@@ -149,6 +149,7 @@ export default function Payroll() {
         data: result,
       })
         .then((res) => {
+          getData();
           setShowTable(true);
         })
         .finally(() => {
