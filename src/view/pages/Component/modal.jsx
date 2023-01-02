@@ -8,8 +8,8 @@ import {
   Row,
   Select,
   TimePicker,
-} from 'antd'
-import React from 'react'
+} from "antd";
+import React from "react";
 
 export default function ModalComponent({
   form,
@@ -23,10 +23,10 @@ export default function ModalComponent({
   return (
     <>
       <Modal
-        title={`${record ? 'Edit' : 'Tambah'} Data Keluarga`}
+        title={`${record ? "Edit" : "Tambah"} Data Komponen`}
         visible={visible}
         style={{
-          marginTop: '-70px',
+          marginTop: "-70px",
         }}
         confirmLoading={loading}
         onCancel={onCancel}
@@ -34,9 +34,9 @@ export default function ModalComponent({
       >
         <div
           style={{
-            height: 'calc(100vh - 300px)',
-            overflowY: 'scroll',
-            overflowX: 'hidden',
+            height: "calc(100vh - 300px)",
+            overflowY: "scroll",
+            overflowX: "hidden",
           }}
         >
           <Form form={form} layout="vertical">
@@ -48,7 +48,7 @@ export default function ModalComponent({
                   rules={[
                     {
                       required: true,
-                      message: 'Nama Komponen tidak boleh kosong',
+                      message: "Nama Komponen tidak boleh kosong",
                     },
                   ]}
                 >
@@ -61,7 +61,7 @@ export default function ModalComponent({
                   rules={[
                     {
                       required: true,
-                      message: 'Tipe tidak boleh kosong',
+                      message: "Tipe tidak boleh kosong",
                     },
                   ]}
                   label="Tipe"
@@ -79,5 +79,5 @@ export default function ModalComponent({
         </div>
       </Modal>
     </>
-  )
+  );
 }
