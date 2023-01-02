@@ -8,8 +8,8 @@ import {
   Row,
   Select,
   TimePicker,
-} from 'antd'
-import React from 'react'
+} from "antd";
+import React from "react";
 
 export default function ModalPosition({
   form,
@@ -23,8 +23,8 @@ export default function ModalPosition({
   return (
     <>
       <Modal
-        title={`${record ? 'Edit' : 'Tambah'} Data ${
-          state.type === 'jabatan' ? 'Jabatan' : 'Komponen'
+        title={`${record ? "Edit" : "Tambah"} Data ${
+          state.type === "jabatan" ? "Jabatan" : "Komponen"
         }`}
         visible={visible}
         confirmLoading={loading}
@@ -37,20 +37,20 @@ export default function ModalPosition({
               <Form.Item
                 name="nama"
                 label={`Nama ${
-                  state.type === 'jabatan' ? 'Jabatan' : 'Komponen'
+                  state.type === "jabatan" ? "Jabatan" : "Komponen"
                 }`}
                 rules={[
                   {
                     required: true,
                     message: `Nama ${
-                      state.type === 'jabatan' ? 'Jabatan' : 'Komponen'
+                      state.type === "jabatan" ? "Jabatan" : "Komponen"
                     } tidak boleh kosong`,
                   },
                 ]}
               >
                 <Input
                   placeholder={`Nama ${
-                    state.type === 'jabatan' ? 'Jabatan' : 'Komponen'
+                    state.type === "jabatan" ? "Jabatan" : "Komponen"
                   }`}
                 />
               </Form.Item>
@@ -63,14 +63,16 @@ export default function ModalPosition({
                 rules={[
                   {
                     required: true,
-                    message: 'Tipe tidak boleh kosong',
+                    message: "Tipe tidak boleh kosong",
                   },
                 ]}
               >
-                {state.type === 'jabatan' ? (
+                {state.type === "jabatan" ? (
                   <Select placeholder="Pilih Tipe">
                     <Select.Option value="Pamong">Pamong</Select.Option>
-                    <Select.Option value="Staff">Staff</Select.Option>
+                    <Select.Option value="Staff">Staff Kelurahan</Select.Option>
+                    <Select.Option value="Honorer">Honorer</Select.Option>
+                    <Select.Option value="Pensiunan">Pensiunan</Select.Option>
                   </Select>
                 ) : (
                   <Select placeholder="Pilih Tipe">
@@ -86,5 +88,5 @@ export default function ModalPosition({
         </Form>
       </Modal>
     </>
-  )
+  );
 }
