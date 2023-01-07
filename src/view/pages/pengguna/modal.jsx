@@ -104,7 +104,7 @@ export default function ModalEmployee({
                   ) : null}
                 </div>
               </Col>
-              <Col span={12}>
+              {/* <Col span={12}>
                 <Form.Item
                   name="nama"
                   label="Nama"
@@ -117,7 +117,7 @@ export default function ModalEmployee({
                 >
                   <Input placeholder="Nama" />
                 </Form.Item>
-              </Col>
+              </Col> */}
               <Col span={12}>
                 <Form.Item
                   name="username"
@@ -146,7 +146,7 @@ export default function ModalEmployee({
                   <Input placeholder="Email" />
                 </Form.Item>
               </Col>
-              <Col span={12}>
+              <Col span={24}>
                 <Form.Item
                   name="role"
                   label="Role"

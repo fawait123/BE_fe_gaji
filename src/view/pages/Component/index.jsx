@@ -66,7 +66,7 @@ export default function ComponentPayroll() {
         method: record ? "put" : "post",
         data: {
           ...res,
-          tgl_lahir: moment(res.tgl_lahir).format("YYYY-MM-DD"),
+          // tgl_lahir: moment(res.tgl_lahir).format("YYYY-MM-DD"),
         },
         params: {
           id: record ? record.id : undefined,

@@ -1,55 +1,56 @@
-import React, { useState, createElement, useEffect } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import React, { useState, createElement, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 
-import { Layout, Button, Row, Col } from 'antd'
-import { RiMenuFoldLine, RiMenuUnfoldLine } from 'react-icons/ri'
+import { Layout, Button, Row, Col } from "antd";
+import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 
-import logoSmall from '../../../assets/images/logo/logo-small.svg'
+import logoSmall from "../../../assets/images/logo/logo-small.svg";
+import Logo from "../../../assets/images/logo/logo.png";
 
-import MenuLogo from './logo'
-import MenuFooter from './footer'
-import MenuItem from './item'
-import MenuMobile from './mobile'
+import MenuLogo from "./logo";
+import MenuFooter from "./footer";
+import MenuItem from "./item";
+import MenuMobile from "./mobile";
 
-const { Sider } = Layout
+const { Sider } = Layout;
 
 export default function Sidebar(props) {
-  const { visible, setVisible } = props
+  const { visible, setVisible } = props;
 
   // Redux
-  const customise = useSelector((state) => state.customise)
+  const customise = useSelector((state) => state.customise);
 
   // Collapsed
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
     if (customise.sidebarCollapsed) {
-      setCollapsed(true)
+      setCollapsed(true);
     } else {
-      setCollapsed(false)
+      setCollapsed(false);
     }
-  }, [customise])
+  }, [customise]);
 
   // Location
-  const location = useLocation()
-  const { pathname } = location
+  const location = useLocation();
+  const { pathname } = location;
 
   // Mobile Sidebar
   const onClose = () => {
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
   // Menu
   function toggle() {
-    setCollapsed(!collapsed)
+    setCollapsed(!collapsed);
   }
 
   const trigger = createElement(collapsed ? RiMenuUnfoldLine : RiMenuFoldLine, {
-    className: 'trigger',
+    className: "trigger",
     onClick: toggle,
-  })
+  });
 
   return (
     <Sider
@@ -64,7 +65,7 @@ export default function Sidebar(props) {
         align="bottom"
         justify="space-between"
       >
-        <Col>{collapsed === false ? <MenuLogo onClose={onClose} /> : ''}</Col>
+        <Col>{collapsed === false ? <MenuLogo onClose={onClose} /> : ""}</Col>
 
         {customise.sidebarCollapseButton && (
           <Col className="hp-pr-0">
@@ -79,7 +80,7 @@ export default function Sidebar(props) {
         {collapsed !== false && (
           <Col className="hp-mt-8">
             <Link to="/" onClick={onClose}>
-              <img className="hp-logo" src={logoSmall} alt="logo" />
+              <img className="hp-logo" src={Logo} alt="logo" />
             </Link>
           </Col>
         )}
@@ -91,5 +92,5 @@ export default function Sidebar(props) {
 
       <MenuMobile onClose={onClose} visible={visible} />
     </Sider>
-  )
+  );
 }

@@ -1,84 +1,84 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense, useEffect } from "react";
 
 // Redux
-import { useDispatch, useSelector } from 'react-redux'
-import { theme } from '../redux/customise/customiseActions'
+import { useDispatch, useSelector } from "react-redux";
+import { theme } from "../redux/customise/customiseActions";
 
 // Router
-import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 
 // Routes
-import { Routes } from './routes'
+import { Routes } from "./routes";
 
 // Layouts
-import VerticalLayout from '../layout/VerticalLayout'
-import HorizontalLayout from '../layout/HorizontalLayout'
-import FullLayout from '../layout/FullLayout'
+import VerticalLayout from "../layout/VerticalLayout";
+import HorizontalLayout from "../layout/HorizontalLayout";
+import FullLayout from "../layout/FullLayout";
 
 // Components
-import HomePage from '../view/home'
-import Error404 from '../view/pages/error'
-import Spinner from '../view/components/spinner'
+import HomePage from "../view/home";
+import Error404 from "../view/pages/error";
+import Spinner from "../view/components/spinner";
 
 export default function Router() {
   // Redux
-  const customise = useSelector((state) => state.customise)
-  const dispatch = useDispatch()
+  const customise = useSelector((state) => state.customise);
+  const dispatch = useDispatch();
 
   // Location
-  const location = useHistory()
+  const location = useHistory();
 
   // Dark Mode
   useEffect(() => {
-    document.querySelector('body').classList.add(customise.theme)
-    dispatch(theme(customise.theme))
-  }, [])
+    document.querySelector("body").classList.add(customise.theme);
+    dispatch(theme(customise.theme));
+  }, []);
 
   // RTL
   useEffect(() => {
-    if (customise.direction == 'ltr') {
-      document.querySelector('html').setAttribute('dir', 'ltr')
-    } else if (customise.direction == 'rtl') {
-      document.querySelector('html').setAttribute('dir', 'rtl')
+    if (customise.direction == "ltr") {
+      document.querySelector("html").setAttribute("dir", "ltr");
+    } else if (customise.direction == "rtl") {
+      document.querySelector("html").setAttribute("dir", "rtl");
     }
-  }, [])
+  }, []);
 
   // Default Layout
-  const DefaultLayout = customise.layout // FullLayout or VerticalLayout
+  const DefaultLayout = customise.layout; // FullLayout or VerticalLayout
 
   // All of the available layouts
-  const Layouts = { VerticalLayout, HorizontalLayout, FullLayout }
+  const Layouts = { VerticalLayout, HorizontalLayout, FullLayout };
 
   // Return Filtered Array of Routes & Paths
   const LayoutRoutesAndPaths = (layout) => {
-    const LayoutRoutes = []
-    const LayoutPaths = []
+    const LayoutRoutes = [];
+    const LayoutPaths = [];
     if (Routes) {
       // Checks if Route layout or Default layout matches current layout
       Routes.filter(
         (route) =>
           route.layout === layout &&
-          (LayoutRoutes.push(route), LayoutPaths.push(route.path)),
-      )
+          (LayoutRoutes.push(route), LayoutPaths.push(route.path))
+      );
     }
 
-    return { LayoutRoutes, LayoutPaths }
-  }
+    return { LayoutRoutes, LayoutPaths };
+  };
 
   // Return Route to Render
   const ResolveRoutes = () => {
     return Object.keys(Layouts).map((layout, index) => {
-      const { LayoutRoutes, LayoutPaths } = LayoutRoutesAndPaths(layout)
+      const { LayoutRoutes, LayoutPaths } = LayoutRoutesAndPaths(layout);
 
-      let LayoutTag
-      if (DefaultLayout == 'HorizontalLayout') {
-        if (layout == 'VerticalLayout') {
-          LayoutTag = Layouts['HorizontalLayout']
+      let LayoutTag;
+      if (DefaultLayout == "HorizontalLayout") {
+        if (layout == "VerticalLayout") {
+          LayoutTag = Layouts["HorizontalLayout"];
         } else {
-          LayoutTag = Layouts[layout]
+          LayoutTag = Layouts[layout];
         }
       } else {
-        LayoutTag = Layouts[layout]
+        LayoutTag = Layouts[layout];
       }
 
       return (
@@ -96,17 +96,17 @@ export default function Router() {
                         <Suspense fallback={<Spinner />}>
                           <route.component {...props} />
                         </Suspense>
-                      )
+                      );
                     }}
                   />
-                )
+                );
               })}
             </Switch>
           </LayoutTag>
         </Route>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
     <BrowserRouter>
@@ -116,9 +116,9 @@ export default function Router() {
         {/* Home Page */}
         <Route
           exact
-          path={'/'}
+          path={"/"}
           render={() => {
-            return DefaultLayout == 'HorizontalLayout' ? (
+            return DefaultLayout == "HorizontalLayout" ? (
               <Layouts.HorizontalLayout>
                 <HomePage />
               </Layouts.HorizontalLayout>
@@ -126,7 +126,7 @@ export default function Router() {
               <Layouts.VerticalLayout>
                 <HomePage />
               </Layouts.VerticalLayout>
-            )
+            );
           }}
         />
 
@@ -136,5 +136,5 @@ export default function Router() {
         </Route>
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
