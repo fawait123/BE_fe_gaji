@@ -176,11 +176,17 @@ export default function Employee() {
       title: "Tanggal Lahir",
       dataIndex: "tgl_lahir",
       key: "tgl_lahir",
+      render: (_, record) => {
+        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+      },
     },
     {
       title: "Tanggal Masuk Kerja",
       dataIndex: "tgl_masuk_kerja",
       key: "tgl_masuk_kerja",
+      render: (_, record) => {
+        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+      },
     },
     {
       title: "Alamat",

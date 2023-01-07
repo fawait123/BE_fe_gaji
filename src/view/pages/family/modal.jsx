@@ -127,7 +127,7 @@ export default function ModalFamily({
                   ]}
                   label="Tanggal Lahir"
                 >
-                  <DatePicker style={{ width: "100%" }} />
+                  <DatePicker format={"DD-MM-YYYY"} style={{ width: "100%" }} />
                 </Form.Item>
               </Col>
             </Row>

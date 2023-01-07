@@ -23,7 +23,10 @@ export default function Login() {
         .then((response) => {
           console.log(response);
           window.localStorage.setItem("token", response?.data?.data?.token);
-          window.localStorage.setItem("data", response?.data?.data?.token);
+          window.localStorage.setItem(
+            "data",
+            JSON.stringify(response?.data?.data?.data)
+          );
           push("/");
         })
         .finally(() => {

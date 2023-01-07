@@ -79,24 +79,26 @@ const Detail = () => {
                   <List.Item>
                     <div style={{ display: "flex" }}>
                       <div style={{ marginRight: 120 }}>
+                        <p>NO SK</p>
                         <p>Nama</p>
                         <p>Jenis Kelamin</p>
                         <p>Tanggal Lahir</p>
                         <p>Jabatan</p>
                         <p>NO HP</p>
-                        <p>NO Rekening</p>
-                        <p>Nama Bank</p>
+                        <p>Bank / NO Rekening</p>
                         <p>Tanggal Masuk Kerja</p>
                         <p>Alamat</p>
                       </div>
                       <div>
+                        <p>: {item.no_sk}</p>
                         <p>: {item.nama}</p>
                         <p>: {item.jenis_kelamin}</p>
                         <p>: {moment(item.tgl_lahir).format("DD MMMM yyyy")}</p>
                         <p>: {item?.jabatan?.nama}</p>
                         <p>: {item?.no_hp}</p>
-                        <p>: {item?.no_rekening}</p>
-                        <p>: {item?.nama_bank}</p>
+                        <p>
+                          : {item?.nama_bank} / {item?.no_rek}
+                        </p>
                         <p>
                           :{" "}
                           {moment(item?.tgl_masuk_kerja).format("DD MMMM yyyy")}
@@ -121,6 +123,7 @@ const Detail = () => {
                             <p>Nama</p>
                             <p>Tanggal Lahir</p>
                             <p>Jenis</p>
+                            <p>Umur</p>
                           </div>
                           <div>
                             <p>: {el?.nama}</p>
@@ -128,6 +131,10 @@ const Detail = () => {
                               : {moment(el?.tgl_lahir).format("DD MMMM yyyy")}
                             </p>
                             <p>: {el?.jenis}</p>
+                            <p>
+                              : {moment(new Date()).diff(el?.tgl_lahir, "year")}{" "}
+                              Tahun
+                            </p>
                           </div>
                         </div>
                       </List.Item>

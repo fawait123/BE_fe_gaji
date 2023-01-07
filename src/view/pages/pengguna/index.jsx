@@ -131,11 +131,11 @@ export default function Employee() {
         meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
     },
 
-    {
-      title: "Nama",
-      dataIndex: "nama",
-      key: "nama",
-    },
+    // {
+    //   title: "Nama",
+    //   dataIndex: "nama",
+    //   key: "nama",
+    // },
     {
       title: "Email",
       dataIndex: "email",

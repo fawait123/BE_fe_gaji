@@ -90,7 +90,7 @@ export default function ModalAttendance({
               <Col span={12}>
                 <Form.Item
                   name="karyawan_id"
-                  label="ID Karyawan"
+                  label="Nama Karyawan"
                   rules={[
                     {
                       required: true,

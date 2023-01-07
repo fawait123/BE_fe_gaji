@@ -1,17 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 
-import { Row, Col } from 'antd'
+import { Row, Col } from "antd";
 
-import bg from '@/assets/images/pages/authentication/authentication-bg.svg'
-import bgDark from '@/assets/images/pages/authentication/authentication-bg-dark.svg'
-import logo from '@/assets/images/logo/logo-vector-blue.svg'
-import logoDark from '@/assets/images/logo/logo-vector.svg'
+import bg from "@/assets/images/pages/authentication/authentication-bg.svg";
+import bgDark from "@/assets/images/pages/authentication/authentication-bg-dark.svg";
+import logo from "@/assets/images/logo/logo-vector-blue.svg";
+import logoDark from "@/assets/images/logo/logo-vector.svg";
+import Logo from "../../assets/images/logo/logo.png";
 
 export default function LeftContent() {
   // Redux
-  const theme = useSelector((state) => state.customise.theme)
+  const theme = useSelector((state) => state.customise.theme);
 
   return (
     <Col
@@ -21,7 +22,7 @@ export default function LeftContent() {
     >
       <Row className="hp-image-row hp-h-100 hp-px-sm-8 hp-px-md-16 hp-pb-sm-32 hp-pt-md-96 hp-pt-md-32">
         <Col className="hp-logo-item hp-m-sm-16 hp-m-md-32 hp-m-64">
-          <img src={theme == 'light' ? logo : logoDark} alt="Logo" />
+          <img src={theme == "light" ? Logo : Logo} alt="Logo" />
         </Col>
 
         <Col span={24}>
@@ -32,7 +33,7 @@ export default function LeftContent() {
               className="hp-bg-item hp-text-center hp-mb-md-32"
             >
               <img
-                src={theme == 'light' ? bg : bgDark}
+                src={theme == "light" ? bg : bgDark}
                 alt="Background Image"
               />
             </Col>
@@ -52,5 +53,5 @@ export default function LeftContent() {
         </Col>
       </Row>
     </Col>
-  )
+  );
 }

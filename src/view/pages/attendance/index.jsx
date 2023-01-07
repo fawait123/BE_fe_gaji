@@ -146,7 +146,14 @@ export default function Attendance() {
       dataIndex: ["karyawan", "nama"],
       key: "name",
     },
-
+    {
+      title: "Tanggal Absen",
+      dataIndex: "tgl_absen",
+      key: "tgl_absen",
+      render: (_, record) => {
+        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+      },
+    },
     {
       title: "Jam Masuk",
       dataIndex: "jam_masuk",

@@ -18,19 +18,43 @@ export default function MenuLogo(props) {
       <Link to="/" onClick={props.onClose}>
         {customise.direction == "rtl" ? (
           customise.theme == "light" ? (
-            <img className="hp-logo" src={Logo} alt="logo" />
+            <img
+              className="hp-logo"
+              width={80}
+              height={100}
+              src={Logo}
+              alt="logo"
+            />
           ) : (
-            <img className="hp-logo" src={Logo} alt="logo" />
+            <img
+              className="hp-logo"
+              width={80}
+              height={100}
+              src={Logo}
+              alt="logo"
+            />
           )
         ) : customise.theme == "light" ? (
-          <img className="hp-logo" src={Logo} alt="logo" />
+          <img
+            className="hp-logo"
+            width={80}
+            height={100}
+            src={Logo}
+            alt="logo"
+          />
         ) : (
-          <img className="hp-logo" src={Logo} alt="logo" />
+          <img
+            className="hp-logo"
+            width={80}
+            height={100}
+            src={Logo}
+            alt="logo"
+          />
         )}
 
-        <span className="h3 d-font-weight-800 hp-text-color-primary-1 hp-mb-6">
+        {/* <span className="h3 d-font-weight-800 hp-text-color-primary-1 hp-mb-6">
           .
-        </span>
+        </span> */}
       </Link>
 
       <a
@@ -41,7 +65,7 @@ export default function MenuLogo(props) {
           letterSpacing: -1.5,
         }}
       >
-        v.{themeConfig.version}
+        {/* v.{themeConfig.version} */}
       </a>
     </div>
   );

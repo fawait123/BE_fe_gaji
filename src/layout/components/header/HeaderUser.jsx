@@ -4,13 +4,20 @@ import { Dropdown, Col, Avatar, Divider, Row } from "antd";
 import { Calendar, Game, People } from "react-iconly";
 import { useHistory } from "react-router-dom";
 import avatarImg from "../../../assets/images/memoji/memoji-1.png";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function HeaderUser() {
   const { push } = useHistory();
+  const [account, setAccount] = useState({});
   const handleLogout = () => {
     window.localStorage.clear();
     push("/login");
   };
+  useEffect(() => {
+    let account = JSON.parse(window.localStorage.getItem("data"));
+    setAccount(account);
+  });
   const menu = (
     <div
       className="hp-border-radius hp-border-1 hp-border-color-black-40 hp-bg-black-0 hp-bg-dark-100 hp-border-color-dark-80 hp-p-24 hp-mt-12"
@@ -84,7 +91,11 @@ export default function HeaderUser() {
   return (
     <Col>
       <Dropdown overlay={menu} placement="bottomLeft">
-        <Avatar src={avatarImg} size={40} className="hp-cursor-pointer" />
+        <Avatar
+          src={account?.foto !== null ? account?.foto : avatarImg}
+          size={40}
+          className="hp-cursor-pointer"
+        />
       </Dropdown>
     </Col>
   );
