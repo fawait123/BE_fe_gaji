@@ -33,6 +33,7 @@ export default function ReportAttendance() {
   const [total, setTotal] = useState(0);
   const [data, setData] = useState([]);
   const [loadingAdd, setLoadingAdd] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   const state = {
     dataEmployee,
@@ -79,6 +80,7 @@ export default function ReportAttendance() {
   }, [meta]);
 
   const handleDownload = async () => {
+    setButtonLoading(true);
     await httpRequest({
       method: "get",
       url: endpointDownload,
@@ -91,6 +93,7 @@ export default function ReportAttendance() {
       link.setAttribute("download", "Laporan Absensi.pdf");
       document.body.appendChild(link);
       link.click();
+      setButtonLoading(false);
     });
   };
 
@@ -272,7 +275,11 @@ export default function ReportAttendance() {
           </Row>
           <Row justify="space-between" style={{ marginBottom: 20 }}>
             <Col>
-              <Button type="primary" onClick={handleDownload}>
+              <Button
+                type="primary"
+                onClick={handleDownload}
+                loading={buttonLoading}
+              >
                 Download
               </Button>
             </Col>

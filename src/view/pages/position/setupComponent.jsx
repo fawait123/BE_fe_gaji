@@ -31,6 +31,7 @@ export default function SetupComponent() {
   const [loadingAdd, setLoadingAdd] = useState(false);
   const [dataFilter, setDataFilter] = useState(null);
   const [loadingView, setLoadingView] = useState(false);
+  const [loadingButton, setLoadingButton] = useState(false);
 
   const fieldColumns = [
     {
@@ -199,6 +200,7 @@ export default function SetupComponent() {
   };
 
   const handleSubmit = async () => {
+    setLoadingButton(true);
     let payload = {
       ...dataForm,
       penambahan: changeValue
@@ -234,6 +236,7 @@ export default function SetupComponent() {
         push("/pages/position");
       })
       .finally(() => {
+        setLoadingButton(false);
         setLoadingAdd(false);
       });
   };
@@ -362,7 +365,11 @@ export default function SetupComponent() {
                       marginLeft: 10,
                     }}
                   >
-                    <Button type="primary" onClick={handleSubmit}>
+                    <Button
+                      type="primary"
+                      onClick={handleSubmit}
+                      loading={loadingButton}
+                    >
                       Simpan
                     </Button>
                   </Col>

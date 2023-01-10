@@ -22,6 +22,7 @@ export default function ModalEmployee({
   state,
   visible,
 }) {
+  console.log(record);
   return (
     <>
       <Modal

@@ -5,6 +5,7 @@ import { Button, Card, Col, DatePicker, Form, Input, Row, Table } from "antd";
 import { Delete, Edit, Send } from "react-iconly";
 import ModalDelete from "@/view/components/delete-modal";
 import httpRequest from "@/utils/axios";
+import { Spin } from "antd";
 import moment from "moment";
 
 const endpoint = "api/kelola-gaji";
@@ -18,7 +19,11 @@ export default function ReportPayroll() {
   const [loading, setLoading] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const [antLoading, setAntLoading] = useState(false);
+  const [loadingPaySlip, setLoadingPaySlip] = useState(false);
+  const [clickButton, setClickButton] = useState(0);
+  let [indexTable, setIndexTable] = useState(1);
   const [dataEmployee, setDataEmployee] = useState([]);
   const [form] = Form.useForm();
   const [meta, setMeta] = useState({
@@ -110,6 +115,7 @@ export default function ReportPayroll() {
   };
 
   const handleDownload = async () => {
+    setButtonLoading(true);
     await httpRequest({
       method: "get",
       url: endpointDownload,
@@ -122,6 +128,7 @@ export default function ReportPayroll() {
       link.setAttribute("download", "Laporan Absensi.pdf");
       document.body.appendChild(link);
       link.click();
+      setButtonLoading(false);
     });
   };
 
@@ -153,8 +160,9 @@ export default function ReportPayroll() {
   const fieldColumns = [
     {
       title: "No",
-      render: (_, record, index) =>
-        meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
+      render: (_, record, index) => {
+        return meta?.page > 1 ? index + 1 + meta?.perPage : index + 1;
+      },
     },
     {
       title: "Karyawan",
@@ -187,6 +195,8 @@ export default function ReportPayroll() {
   ];
 
   const handleDownloadSlip = async (rec) => {
+    setClickButton(rec.id);
+    setLoadingPaySlip(true);
     await httpRequest({
       method: "get",
       url: endpointDownloadSlip,
@@ -201,6 +211,8 @@ export default function ReportPayroll() {
       link.setAttribute("download", "Slip Gaji.pdf");
       document.body.appendChild(link);
       link.click();
+      setClickButton(0);
+      setLoadingPaySlip(false);
     });
   };
 
@@ -210,15 +222,30 @@ export default function ReportPayroll() {
       title: "#",
       width: 100,
       render: (_, record, index) => {
+        let check = record.id === clickButton;
         return (
           <>
-            <Send
-              set="outlined"
-              style={{
-                cursor: "pointer",
-              }}
-              onClick={() => handleDownloadSlip(record)}
-            />
+            {loadingPaySlip ? (
+              check ? (
+                <Spin />
+              ) : (
+                <Send
+                  set="outlined"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleDownloadSlip(record)}
+                />
+              )
+            ) : (
+              <Send
+                set="outlined"
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => handleDownloadSlip(record)}
+              />
+            )}
           </>
         );
       },
@@ -274,7 +301,11 @@ export default function ReportPayroll() {
           </Row>
           <Row justify="space-between" style={{ marginBottom: 20 }}>
             <Col>
-              <Button type="primary" onClick={handleDownload}>
+              <Button
+                type="primary"
+                onClick={handleDownload}
+                loading={buttonLoading}
+              >
                 Download
               </Button>
             </Col>
@@ -297,6 +328,7 @@ export default function ReportPayroll() {
             columns={columns}
             dataSource={data}
             onChange={(pagination, filters, sorter) => {
+              console.log(pagination);
               setMeta({
                 ...meta,
                 page: pagination.current,
