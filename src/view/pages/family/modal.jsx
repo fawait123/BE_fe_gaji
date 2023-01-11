@@ -32,7 +32,7 @@ export default function ModalFamily({
       display: "Istri",
     },
     {
-      id: 2,
+      id: 3,
       nama: "Suami",
       display: "Suami",
     },
@@ -70,9 +70,9 @@ export default function ModalFamily({
                   ]}
                 >
                   <Select placeholder="Pilih Karyawan" allowClear>
-                    {state.dataEmployee.map((el) => {
+                    {state.dataEmployee.map((el, _index) => {
                       return (
-                        <Select.Option value={el.id} key={el.id}>
+                        <Select.Option value={el.id} key={_index}>
                           {el.nama}
                         </Select.Option>
                       );
@@ -106,9 +106,9 @@ export default function ModalFamily({
                   ]}
                 >
                   <Select placeholder="Jenis">
-                    {dataJenis.map((el) => {
+                    {dataJenis.map((el, _index) => {
                       return (
-                        <Select.Option key={el.id} value={el.nama}>
+                        <Select.Option key={_index} value={el.nama}>
                           {el.display}
                         </Select.Option>
                       );

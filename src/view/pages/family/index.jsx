@@ -83,7 +83,7 @@ export default function EmployeeFamily() {
       setLoading(true);
       await httpRequest({
         url: endpoint,
-        method: record ? "put" : "post",
+        method: record ? "PUT" : "POST",
         data: {
           ...res,
           tgl_lahir: moment(res.tgl_lahir).format("YYYY-MM-DD"),
@@ -93,6 +93,7 @@ export default function EmployeeFamily() {
         },
       })
         .then((response) => {
+          console.log("sucess");
           setVisible(false);
           form.resetFields();
           setRecord(null);
@@ -176,10 +177,13 @@ export default function EmployeeFamily() {
               }}
               onClick={() => {
                 setVisible(true);
-                setRecord(record);
+                setRecord({
+                  ...record,
+                  karyawan_id: parseInt(record.karyawan_id),
+                });
                 console.log(record);
                 form.setFieldsValue({
-                  karyawan_id: record.karyawan?.id,
+                  karyawan_id: parseInt(record.karyawan_id),
                   nama: record.nama,
                   tgl_lahir: moment(record.tgl_lahir),
                   jenis: record.jenis,

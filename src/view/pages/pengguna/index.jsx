@@ -61,7 +61,7 @@ export default function Employee() {
     getData();
   }, [meta]);
 
-  const onOk = () => {
+  const onOk = async () => {
     form.validateFields().then(async (res) => {
       setLoading(true);
       await httpRequest({
