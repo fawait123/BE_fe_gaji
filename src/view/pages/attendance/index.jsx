@@ -193,6 +193,7 @@ export default function Attendance() {
                 setRecord(record);
                 form.setFieldsValue({
                   ...record,
+                  karyawan_id: parseInt(record.karyawan_id),
                   jam_masuk: moment("2022-10-21T" + record.jam_masuk),
                   jam_pulang: moment("2022-10-21T" + record.jam_pulang),
                   tgl_absen: moment(record.tgl_absen),

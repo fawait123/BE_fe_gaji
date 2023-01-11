@@ -138,7 +138,8 @@ export default function EmployeeFamily() {
     {
       title: "No",
       render: (_, record, index) =>
-        meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
+        // meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
+        (meta.page - 1) * meta.perPage + index + 1,
     },
     {
       title: "Karyawan",
@@ -176,6 +177,7 @@ export default function EmployeeFamily() {
                 cursor: "pointer",
               }}
               onClick={() => {
+                getEmployee();
                 setVisible(true);
                 setRecord({
                   ...record,
