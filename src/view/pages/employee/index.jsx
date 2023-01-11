@@ -145,7 +145,8 @@ export default function Employee() {
     {
       title: "No",
       render: (_, record, index) =>
-        meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
+        // meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
+        (meta.page - 1) * meta.perPage + index + 1,
     },
     // {
     //   title: 'ID Karyawan',
