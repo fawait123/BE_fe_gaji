@@ -8,7 +8,7 @@ import ModalDelete from "@/view/components/delete-modal";
 import httpRequest from "@/utils/axios";
 import moment from "moment";
 
-const endpoint = "api/user";
+const endpoint = "api/pengguna";
 
 export default function Employee() {
   const [visible, setVisible] = useState(false);
@@ -85,6 +85,7 @@ export default function Employee() {
             url: "",
             fileList: [],
           });
+          setLoading(false);
         })
         .catch((error) => {
           form.resetFields();
