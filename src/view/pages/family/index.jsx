@@ -100,6 +100,7 @@ export default function EmployeeFamily() {
           getData();
         })
         .catch((error) => {
+          console.log(error);
           form.resetFields();
         })
         .finally(() => {
