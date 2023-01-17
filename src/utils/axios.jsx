@@ -4,7 +4,6 @@ import { CallSilent, CloseSquare, TickSquare } from "react-iconly";
 import Config from "./config";
 
 const httpRequest = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
   baseURL: Config.baseURL,
 });
 
