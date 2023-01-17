@@ -178,7 +178,7 @@ export default function Employee() {
       dataIndex: "tgl_lahir",
       key: "tgl_lahir",
       render: (_, record) => {
-        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+        return <span>{moment(record?.tgl_lahir).format("DD MMMM yyyy")}</span>;
       },
     },
     {
@@ -186,7 +186,9 @@ export default function Employee() {
       dataIndex: "tgl_masuk_kerja",
       key: "tgl_masuk_kerja",
       render: (_, record) => {
-        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+        return (
+          <span>{moment(record?.tgl_masuk_kerja).format("DD MMMM yyyy")}</span>
+        );
       },
     },
     {

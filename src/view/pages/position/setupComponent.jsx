@@ -32,6 +32,7 @@ export default function SetupComponent() {
   const [dataFilter, setDataFilter] = useState(null);
   const [loadingView, setLoadingView] = useState(false);
   const [loadingButton, setLoadingButton] = useState(false);
+  const [jabatan, setJabatan] = useState(0);
 
   const fieldColumns = [
     {
@@ -166,7 +167,7 @@ export default function SetupComponent() {
                   arr[findIndexKinerja].nominal =
                     (parseInt(e.target.value) * 30) / 100;
                   let total_kinerja = (parseInt(e.target.value) * 30) / 100;
-                  arr[findIndexPphKinerja].nominal = (total_kinerja * 4) / 100;
+                  arr[findIndexPphKinerja].nominal = (total_kinerja * 1) / 100;
                 }
                 // perhitungan otomatis tunjangan pph 21 jabatan
                 if (
@@ -178,7 +179,7 @@ export default function SetupComponent() {
                       .includes("pph 21 tunj jabatan");
                   });
                   arr[findIndexPphJabatan].nominal =
-                    (parseInt(e.target.value) * 1) / 100;
+                    (parseInt(e.target.value) * 4) / 100;
                 }
                 setChangeValue(arr);
               }}
@@ -203,6 +204,7 @@ export default function SetupComponent() {
     setLoadingButton(true);
     let payload = {
       ...dataForm,
+      jabatan_id: jabatan,
       penambahan: changeValue
         .filter((el) => el.tipe === "Penambahan")
         .map((el) => {
@@ -222,7 +224,6 @@ export default function SetupComponent() {
           };
         }),
     };
-
     setLoadingAdd(true);
     await httpRequest({
       url: endpointGaji,
@@ -273,7 +274,10 @@ export default function SetupComponent() {
                       },
                     ]}
                   >
-                    <Select placeholder="Pilih Jabatan">
+                    <Select
+                      placeholder="Pilih Jabatan"
+                      onChange={(value) => setJabatan(value)}
+                    >
                       {dataJabatan.map((el) => {
                         return (
                           <Select.Option value={el.id}>{el.nama}</Select.Option>

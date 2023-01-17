@@ -1,10 +1,10 @@
 import { notification } from "antd";
 import axios from "axios";
 import { CallSilent, CloseSquare, TickSquare } from "react-iconly";
+import Config from "./config";
 
 const httpRequest = axios.create({
-  // baseURL: process.env.REACT_APP_BASE_URL,
-  baseURL: "https://backend.sinduadihebat.my.id/",
+  baseURL: Config.baseURL,
 });
 
 httpRequest.interceptors.request.use(
