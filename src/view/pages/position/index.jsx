@@ -47,6 +47,7 @@ export default function Position() {
       params: meta,
     })
       .then((response) => {
+        console.log(response);
         setTotal(response?.data?.meta?.total);
         let data = response?.data?.results.map((el) => {
           return {

@@ -5,9 +5,11 @@ import { Button, Card, Col, DatePicker, Form, Input, Row, Table } from "antd";
 import { Delete, Edit } from "react-iconly";
 import ModalDelete from "@/view/components/delete-modal";
 import httpRequest from "@/utils/axios";
+import axios from "axios";
 import moment from "moment";
+import Config from "../../../utils/config";
 
-const endpoint = "api/run-payroll";
+const endpoint = Config.baseURL + "api/run-payroll";
 const endpointList = "api/kelola-gaji";
 const endpointKaryawan = "api/karyawan";
 
@@ -143,18 +145,32 @@ export default function Payroll() {
       setLoading(true);
       setShowTable(false);
 
-      await httpRequest({
+      await axios({
         method: "post",
         url: endpoint,
         data: result,
       })
-        .then((res) => {
+        .then((result) => {
+          console.log("res", result);
           getData();
           setShowTable(true);
         })
         .finally(() => {
           setLoading(false);
         });
+      // await httpRequest({
+      //   method: "post",
+      //   url: endpoint,
+      //   data: result,
+      // })
+      //   .then((res) => {
+      //     console.log("responses", res);
+      //     getData();
+      //     setShowTable(true);
+      //   })
+      //   .finally(() => {
+      //     setLoading(false);
+      //   });
     });
   };
 
