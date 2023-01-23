@@ -43,7 +43,10 @@ export default function EmployeeFamily() {
     await httpRequest({
       url: endpoint,
       method: "get",
-      params: meta,
+      params: {
+        ...meta,
+        perPage: 10,
+      },
     })
       .then((response) => {
         setTotal(response?.data?.meta?.total);
@@ -157,6 +160,9 @@ export default function EmployeeFamily() {
       title: "Tanggal Lahir",
       dataIndex: "tgl_lahir",
       key: "out",
+      render: (_, record) => {
+        return <span>{moment(record?.tgl_lahir).format("DD MMMM yyyy")}</span>;
+      },
     },
     {
       title: "Jenis",

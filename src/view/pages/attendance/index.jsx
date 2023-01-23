@@ -43,7 +43,10 @@ export default function Attendance() {
     await httpRequest({
       url: endpoint,
       method: "get",
-      params: meta,
+      params: {
+        ...meta,
+        perPage: 10,
+      },
     })
       .then((response) => {
         setTotal(response?.data?.meta?.total);
