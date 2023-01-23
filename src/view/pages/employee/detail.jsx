@@ -93,7 +93,11 @@ const Detail = () => {
                         <p>: {item.no_sk}</p>
                         <p>: {item.nama}</p>
                         <p>: {item.jenis_kelamin}</p>
-                        <p>: {moment(item.tgl_lahir).format("DD MMMM yyyy")}</p>
+                        <p>
+                          : {moment(item.tgl_lahir).format("DD MMMM yyyy")} /{" "}
+                          {moment(new Date()).diff(item?.tgl_lahir, "year")}{" "}
+                          Tahun
+                        </p>
                         <p>: {item?.jabatan?.nama}</p>
                         <p>: {item?.no_hp}</p>
                         <p>
@@ -101,7 +105,13 @@ const Detail = () => {
                         </p>
                         <p>
                           :{" "}
-                          {moment(item?.tgl_masuk_kerja).format("DD MMMM yyyy")}
+                          {moment(item?.tgl_masuk_kerja).format("DD MMMM yyyy")}{" "}
+                          /{" "}
+                          {moment(new Date()).diff(
+                            item?.tgl_masuk_kerja,
+                            "year"
+                          )}{" "}
+                          Tahun
                         </p>
                         <p>: {item?.alamat}</p>
                       </div>

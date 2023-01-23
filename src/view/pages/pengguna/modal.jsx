@@ -159,7 +159,8 @@ export default function ModalEmployee({
                 >
                   <Select placeholder="Select Role">
                     <Select.Option value="admin">Admin</Select.Option>
-                    <Select.Option value="staff">Staff</Select.Option>
+                    <Select.Option value="staff">Staff Kelurahan</Select.Option>
+                    <Select.Option value="lurah">Lurah</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>
