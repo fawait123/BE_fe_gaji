@@ -27,7 +27,8 @@ export default function Login() {
             "data",
             JSON.stringify(response?.data?.data?.data)
           );
-          push("/");
+          // push("/");
+          window.location.href = "/";
         })
         .finally(() => {
           setLoading(false);

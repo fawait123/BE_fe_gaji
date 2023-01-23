@@ -143,7 +143,9 @@ export default function SetupComponent() {
               value={record.nominal}
               disabled={
                 record?.nama?.toLowerCase().includes("kinerja") ||
-                record?.nama?.toLowerCase().includes("pph 21 tunj jabatan")
+                record?.nama?.toLowerCase().includes("pph 21 tunj jabatan") ||
+                record?.nama?.toLowerCase().includes("tunj jabatan") ||
+                record?.nama?.toLowerCase().includes("anak")
                   ? true
                   : false
               }
@@ -168,19 +170,30 @@ export default function SetupComponent() {
                     (parseInt(e.target.value) * 30) / 100;
                   let total_kinerja = (parseInt(e.target.value) * 30) / 100;
                   arr[findIndexPphKinerja].nominal = (total_kinerja * 1) / 100;
-                }
-                // perhitungan otomatis tunjangan pph 21 jabatan
-                if (
-                  arr[indexData].nama.toLowerCase().includes("tunj jabatan")
-                ) {
+                  // cari input tunjangan jabatan
+                  let findIndexJabatan = changeValue.findIndex((el) => {
+                    return el?.nama?.toLowerCase().includes("tunj jabatan");
+                  });
+
+                  arr[findIndexJabatan].nominal =
+                    (parseInt(e.target.value) * 21) / 100;
+
                   let findIndexPphJabatan = changeValue.findIndex((el) => {
                     return el?.nama
                       ?.toLowerCase()
                       .includes("pph 21 tunj jabatan");
                   });
+                  let total_jabatan = (parseInt(e.target.value) * 21) / 100;
                   arr[findIndexPphJabatan].nominal =
-                    (parseInt(e.target.value) * 4) / 100;
+                    (parseInt(total_jabatan) * 4) / 100;
+
+                  let findIndexAnak = changeValue.findIndex((el) => {
+                    return el?.nama?.toLowerCase().includes("anak");
+                  });
+                  arr[findIndexAnak].nominal =
+                    (parseInt(e.target.value) * 2) / 100;
                 }
+                // perhitungan otomatis tunjangan pph 21 jabatan
                 setChangeValue(arr);
               }}
             />

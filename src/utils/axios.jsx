@@ -28,6 +28,37 @@ httpRequest.interceptors.response.use(
       });
     }
     return response;
+    // if (response?.config?.method === "post") {
+    //   if (
+    //     response?.config?.url !== "login" &&
+    //     response?.config?.url !== "import-xls"
+    //   ) {
+    //     notification.success({
+    //       message: "Success",
+    //       description: response.data.message,
+    //       icon: <TickSquare set="curved" className="remix-icon" />,
+    //     });
+    //   }
+    // } else if (response?.config?.method === "put") {
+    //   notification.success({
+    //     message: "Success",
+    //     description: response.data.message,
+    //     icon: <TickSquare set="curved" className="remix-icon" />,
+    //   });
+    // } else if (response?.config?.method === "delete") {
+    //   notification.success({
+    //     message: "Success",
+    //     description: response.data.message,
+    //     icon: <TickSquare set="curved" className="remix-icon" />,
+    //   });
+    // } else if (response?.config?.method !== "get") {
+    //   notification.success({
+    //     message: "Success",
+    //     description: response.data.message,
+    //     icon: <TickSquare set="curved" className="remix-icon" />,
+    //   });
+    // }
+    // return response;
   },
   (error) => {
     if (typeof error.response === "undefined") {
