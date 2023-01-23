@@ -91,11 +91,16 @@ export default function HeaderUser() {
   return (
     <Col>
       <Dropdown overlay={menu} placement="bottomLeft">
-        <Avatar
-          src={account?.foto !== null ? account?.foto : avatarImg}
-          size={40}
-          className="hp-cursor-pointer"
-        />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <span style={{ marginRight: 20 }}>
+            {account?.role} | {account?.username}
+          </span>{" "}
+          <Avatar
+            src={account?.foto !== null ? account?.foto : avatarImg}
+            size={40}
+            className="hp-cursor-pointer"
+          />
+        </div>
       </Dropdown>
     </Col>
   );

@@ -145,7 +145,8 @@ export default function SetupComponent() {
                 record?.nama?.toLowerCase().includes("kinerja") ||
                 record?.nama?.toLowerCase().includes("pph 21 tunj jabatan") ||
                 record?.nama?.toLowerCase().includes("tunj jabatan") ||
-                record?.nama?.toLowerCase().includes("anak")
+                record?.nama?.toLowerCase().includes("anak") ||
+                record?.nama?.toLowerCase().includes("suami/istri")
                   ? true
                   : false
               }
@@ -192,6 +193,12 @@ export default function SetupComponent() {
                   });
                   arr[findIndexAnak].nominal =
                     (parseInt(e.target.value) * 2) / 100;
+
+                  let findIndexSuamiIstri = changeValue.findIndex((el) => {
+                    return el?.nama?.toLowerCase().includes("suami/istri");
+                  });
+                  arr[findIndexSuamiIstri].nominal =
+                    (parseInt(e.target.value) * 10) / 100;
                 }
                 // perhitungan otomatis tunjangan pph 21 jabatan
                 setChangeValue(arr);
