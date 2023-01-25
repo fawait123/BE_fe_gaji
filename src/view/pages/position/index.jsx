@@ -27,7 +27,7 @@ export default function Position() {
     offset: 0,
     order: "created_at",
     page: 1,
-    perPage: 5,
+    perPage: 12,
     search: "",
     total: 1,
     totalPage: 1,

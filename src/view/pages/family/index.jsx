@@ -25,7 +25,7 @@ export default function EmployeeFamily() {
     offset: 0,
     order: "created_at",
     page: 1,
-    perPage: 5,
+    perPage: 12,
     search: "",
     total: 1,
     totalPage: 1,
@@ -43,10 +43,7 @@ export default function EmployeeFamily() {
     await httpRequest({
       url: endpoint,
       method: "get",
-      params: {
-        ...meta,
-        perPage: 10,
-      },
+      params: meta,
     })
       .then((response) => {
         setTotal(response?.data?.meta?.total);
@@ -150,7 +147,11 @@ export default function EmployeeFamily() {
       dataIndex: ["karyawan", "nama"],
       key: "name",
     },
-
+    {
+      title: "Jabatan",
+      dataIndex: ["karyawan", "jabatan", "nama"],
+      key: "name_jabatan",
+    },
     {
       title: "Nama",
       dataIndex: "nama",

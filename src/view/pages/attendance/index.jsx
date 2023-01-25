@@ -25,7 +25,7 @@ export default function Attendance() {
     offset: 0,
     order: "created_at",
     page: 1,
-    perPage: 5,
+    perPage: 12,
     search: "",
     total: 1,
     totalPage: 1,
@@ -148,6 +148,11 @@ export default function Attendance() {
       title: "Nama",
       dataIndex: ["karyawan", "nama"],
       key: "name",
+    },
+    {
+      title: "Jabatan",
+      dataIndex: ["karyawan", "jabatan", "nama"],
+      key: "name_jabatan",
     },
     {
       title: "Tanggal Absen",
