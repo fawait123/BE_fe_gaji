@@ -131,9 +131,9 @@ export default function Position() {
       key: "name",
     },
     {
-      title: "Nama",
+      title: "Tipe",
       dataIndex: "tipe",
-      key: "name",
+      key: "tipe",
     },
   ];
   const columns = [
