@@ -125,7 +125,7 @@ export default function ReportPayroll() {
       const objectUrl = URL.createObjectURL(new Blob([res.data]));
       const link = document.createElement("a");
       link.href = objectUrl;
-      link.setAttribute("download", "Laporan Absensi.pdf");
+      link.setAttribute("download", "Laporan Penggajian.pdf");
       document.body.appendChild(link);
       link.click();
       setButtonLoading(false);
