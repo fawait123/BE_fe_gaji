@@ -154,7 +154,7 @@ export default function Employee() {
     //   key: 'id_karyawan',
     // },
     {
-      title: "Nama",
+      title: "Nama Karyawan",
       dataIndex: "nama",
       key: "nama",
     },
@@ -169,9 +169,9 @@ export default function Employee() {
       key: "jenis_kelamin",
     },
     {
-      title: "No. HP",
-      dataIndex: "no_hp",
-      key: "no_hp",
+      title: "No SK",
+      dataIndex: "no_sk",
+      key: "no_sk"
     },
     {
       title: "Tanggal Lahir",
@@ -192,7 +192,7 @@ export default function Employee() {
       },
     },
     {
-      title: "Alamat",
+      title: "Alamat Lengkap",
       dataIndex: "alamat",
       key: "alamat",
     },
@@ -200,7 +200,7 @@ export default function Employee() {
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Aksi",
       width: 100,
       render: (_, record, index) => {
         return (
@@ -308,7 +308,7 @@ export default function Employee() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari Nama Karyawan"
               />
             </Col>
           </Row>

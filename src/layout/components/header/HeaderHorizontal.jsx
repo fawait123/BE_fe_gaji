@@ -86,7 +86,7 @@ export default function HeaderHorizontal(props) {
               onClick={showDrawer}
               icon={
                 <RiMenuFill
-                  size={24}
+                  size={10}
                   className="remix-icon hp-text-color-black-80"
                 />
               }

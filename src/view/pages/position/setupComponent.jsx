@@ -36,7 +36,7 @@ export default function SetupComponent() {
 
   const fieldColumns = [
     {
-      title: "Name",
+      title: "Nama Komponen",
       width: 300,
       dataIndex: "nama",
       key: "name",
@@ -131,7 +131,7 @@ export default function SetupComponent() {
   const columns = [
     ...fieldColumns,
     {
-      title: "Nominal",
+      title: "Nominal Gaji",
       dataIndex: "nominal",
       key: "nominal",
       render: (_, record, index) => {
@@ -283,19 +283,19 @@ export default function SetupComponent() {
           <div style={{ marginTop: 20, width: "100%", padding: 10 }}>
             <Form form={form} layout="horizontal">
               <Row gutter={[20, 20]}>
-                <Col span={12}>
+                <Col span={6}>
                   <Form.Item
                     name="position"
-                    label="Jabatan"
+                    label="Nama Jabatan"
                     rules={[
                       {
                         required: true,
-                        message: "Jabatan tidak boleh kosong",
+                        message: "Nama jabatan harus diisi",
                       },
                     ]}
                   >
                     <Select
-                      placeholder="Pilih Jabatan"
+                      placeholder="Pilih nama jabatan"
                       onChange={(value) => setJabatan(value)}
                     >
                       {dataJabatan.map((el) => {
@@ -314,7 +314,7 @@ export default function SetupComponent() {
                         loading={loadingView}
                         onClick={handleView}
                       >
-                        View
+                        Lihat
                       </Button>
                     </Col>
                   </Row>
@@ -329,7 +329,7 @@ export default function SetupComponent() {
                     marginTop: 30,
                   }}
                 >
-                  Penambahan
+                  Penambahan Gaji
                 </div>
                 <Divider />
                 <Row
@@ -354,7 +354,7 @@ export default function SetupComponent() {
                     marginTop: 50,
                   }}
                 >
-                  Pengurangan
+                  Pengurangan Gaji
                 </div>
                 <Divider />
                 <Row

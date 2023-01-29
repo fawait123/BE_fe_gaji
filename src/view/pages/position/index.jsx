@@ -126,12 +126,12 @@ export default function Position() {
     },
 
     {
-      title: "Nama",
+      title: "Nama Jabatan",
       dataIndex: "nama",
       key: "name",
     },
     {
-      title: "Nama",
+      title: "Tipe Jabatan",
       dataIndex: "tipe",
       key: "name",
     },
@@ -139,7 +139,7 @@ export default function Position() {
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Aksi",
       width: 100,
       render: (_, record, index) => {
         return (
@@ -304,7 +304,7 @@ export default function Position() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari nama jabatan"
               />
             </Col>
           </Row>

@@ -122,12 +122,12 @@ export default function ComponentPayroll() {
         meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
     },
     {
-      title: "Nama",
+      title: "Nama Komponen",
       dataIndex: "nama",
       key: "in",
     },
     {
-      title: "Tipe",
+      title: "Tipe Komponen",
       dataIndex: "tipe",
       key: "tipe",
     },
@@ -135,7 +135,7 @@ export default function ComponentPayroll() {
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Aksi",
       width: 100,
       render: (_, record, index) => {
         return (
@@ -197,7 +197,7 @@ export default function ComponentPayroll() {
           </Row>
         </Col>
 
-        <PageTitle pageTitle="Komponent Payroll" />
+        <PageTitle pageTitle="Komponen Gaji" />
         <Card style={{ marginTop: 20, width: "100%", padding: 10 }}>
           <Row justify="space-between" style={{ marginBottom: 20 }}>
             <Col>
@@ -222,7 +222,7 @@ export default function ComponentPayroll() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari nama komponen "
               />
             </Col>
           </Row>
