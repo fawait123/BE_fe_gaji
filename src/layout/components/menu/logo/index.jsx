@@ -6,8 +6,7 @@ import Yoda from "../../../../assets/images/logo/logo.svg";
 import YodaDark from "../../../../assets/images/logo/logo-dark.svg";
 import YodaRtl from "../../../../assets/images/logo/logo-rtl.svg";
 import YodaRtlDark from "../../../../assets/images/logo/logo-rtl-dark.svg";
-import Logo from "../../../../assets/images/logo/logo.png";
-
+import Logo from "../../../../assets/images/logo/Logo2.png";
 import themeConfig from "../../../../configs/themeConfig.jsx";
 
 export default function MenuLogo(props) {
@@ -37,16 +36,14 @@ export default function MenuLogo(props) {
         ) : customise.theme == "light" ? (
           <img
             className="hp-logo"
-            width={80}
-            height={100}
             src={Logo}
+            style={{width:"90px",height:"90px"}}   
             alt="logo"
           />
         ) : (
           <img
             className="hp-logo"
-            width={80}
-            height={100}
+            style={{width:"90px",height:"90px"}}  
             src={Logo}
             alt="logo"
           />

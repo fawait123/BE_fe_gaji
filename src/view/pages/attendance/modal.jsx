@@ -52,53 +52,25 @@ export default function ModalAttendance({
       >
         <div
           style={{
-            height: "calc(100vh - 300px)",
+            height: "calc(100vh - 420px)",
             overflowY: "scroll",
             overflowX: "hidden",
           }}
         >
           <Form form={form} layout="vertical">
             <Row gutter={[20, 20]}>
-              <Col span={12}>
-                <Form.Item
-                  name="jam_masuk"
-                  label="Jam Masuk"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Jam Masuk tidak boleh kosong",
-                    },
-                  ]}
-                >
-                  <TimePicker style={{ width: "100%" }} />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item
-                  name="jam_pulang"
-                  label="Jam Keluar"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Jam Keluar tidak boleh kosong",
-                    },
-                  ]}
-                >
-                  <TimePicker style={{ width: "100%" }} />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
+            <Col span={11}>
                 <Form.Item
                   name="karyawan_id"
                   label="Nama Karyawan"
                   rules={[
                     {
                       required: true,
-                      message: "ID Karyawan tidak boleh kosong",
+                      message: "Nama karyawan harus diisi",
                     },
                   ]}
                 >
-                  <Select placeholder="Pilih Karyawan" allowClear>
+                  <Select placeholder="Pilih nama karyawan" allowClear>
                     {state.dataEmployee.map((el) => {
                       return (
                         <Select.Option value={el.id} key={el.id}>
@@ -109,14 +81,14 @@ export default function ModalAttendance({
                   </Select>
                 </Form.Item>
               </Col>
-              <Col span={12}>
+            <Col span={12}>
                 <Form.Item
                   name="tgl_absen"
                   label="Tanggal Absensi"
                   rules={[
                     {
                       required: true,
-                      message: "Tanggal Absensi tidak boleh kosong",
+                      message: "Tanggal Absensi harus diisi",
                     },
                   ]}
                 >
@@ -127,18 +99,50 @@ export default function ModalAttendance({
                   />
                 </Form.Item>
               </Col>
-              <Col span={24}>
+
+              <Col span={11}>
+                <Form.Item
+                  name="jam_masuk"
+                  label="Jam Masuk"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Jam Masuk harus diisi",
+                    },
+                  ]}
+                >
+                  <TimePicker style={{ width: "100%" }} />
+                </Form.Item>
+              </Col>
+              
+              <Col span={12}>
+                <Form.Item
+                  name="jam_pulang"
+                  label="Jam Keluar"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Jam Keluar harus diisi",
+                    },
+                  ]}
+                >
+                  <TimePicker style={{ width: "100%" }} />
+                </Form.Item>
+              </Col>
+              
+
+              <Col span={23}>
                 <Form.Item
                   name="status_kehadiran"
                   label="Status Kehadiran"
                   rules={[
                     {
                       required: true,
-                      message: "Status Kehadiran tidak boleh kosong",
+                      message: "Status Kehadiran harus diisi",
                     },
                   ]}
                 >
-                  <Select placeholder="Status Kehadiran">
+                  <Select placeholder="Pilih status kehadiran">
                     {dataKehadiran.map((el) => {
                       return (
                         <Select.Option key={el.id} value={el.nama}>
@@ -149,9 +153,11 @@ export default function ModalAttendance({
                   </Select>
                 </Form.Item>
               </Col>
-              <Col span={24}>
-                <Form.Item name="keterangan" label="Keterangan">
-                  <Input.TextArea rows={3} placeholder="Keterangan" />
+              <Col span={23}>
+                <Form.Item 
+                name="keterangan" 
+                label="Keterangan Absensi">
+                  <Input.TextArea rows={3} placeholder="Keterangan status kehadiran karyawan" />
                 </Form.Item>
               </Col>
             </Row>

@@ -81,7 +81,6 @@ export default function HeaderUser() {
         style={{
           cursor: "pointer",
         }}
-        className="hp-p1-body"
       >
         Logout
       </div>
@@ -93,11 +92,13 @@ export default function HeaderUser() {
       <Dropdown overlay={menu} placement="bottomLeft">
         <div style={{ display: "flex", alignItems: "center" }}>
           <span style={{ marginRight: 20 }}>
-            {account?.role} | {account?.username}
+          <b>  {account?.role} | {account?.username}</b>
+          
           </span>{" "}
           <Avatar
             src={account?.foto !== null ? account?.foto : avatarImg}
-            size={40}
+            size={60}
+            style={{border:"0.3px solid black"}}
             className="hp-cursor-pointer"
           />
         </div>

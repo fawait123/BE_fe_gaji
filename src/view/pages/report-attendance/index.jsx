@@ -158,16 +158,7 @@ export default function ReportAttendance() {
       render: (_, record, index) =>
         meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
     },
-    {
-      title: "Nama",
-      dataIndex: ["karyawan", "nama"],
-      key: "name",
-    },
-    {
-      title: "Jabatan",
-      dataIndex: ["karyawan", "jabatan", "nama"],
-      key: "name_jabatan",
-    },
+
     {
       title: "Tanggal Absen",
       dataIndex: "tgl_absen",
@@ -175,6 +166,16 @@ export default function ReportAttendance() {
       render: (_record, index) => {
         return <span>{moment(_record).format("DD MMMM yyyy")}</span>;
       },
+    },
+    {
+      title: "Nama Karyawan",
+      dataIndex: ["karyawan", "nama"],
+      key: "name",
+    },
+    {
+      title: "Jabatan",
+      dataIndex: ["karyawan", "jabatan", "nama"],
+      key: "name_jabatan",
     },
     {
       title: "Jam Masuk",
@@ -254,7 +255,7 @@ export default function ReportAttendance() {
         <PageTitle pageTitle="Laporan Absensi" />
         <Card style={{ marginTop: 20, width: "100%", padding: 10 }}>
           <Row gutter={[20]} style={{ marginBottom: 20 }}>
-            <Col span={12}>
+            <Col span={6}>
               <DatePicker.RangePicker
                 style={{
                   width: "100%",
@@ -299,7 +300,7 @@ export default function ReportAttendance() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari nama karyawan"
               />
             </Col>
           </Row>

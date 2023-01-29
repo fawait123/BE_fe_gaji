@@ -29,7 +29,7 @@ export default function Home() {
   }, []);
   return (
     <Row gutter={[32, 32]}>
-      <PageTitle pageTitle="Home Page" />
+      <PageTitle pageTitle="Dashboard" />
       {antLoading ? (
         <Col span={24}>
           <div

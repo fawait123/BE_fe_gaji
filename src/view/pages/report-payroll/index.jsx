@@ -165,7 +165,15 @@ export default function ReportPayroll() {
       },
     },
     {
-      title: "Karyawan",
+      title: "Tanggal Penggajian",
+      dataIndex: "tgl_penggajian",
+      key: "tgl_penggajian",
+      render: (_record, index) => {
+        return <span>{moment(_record).format("DD MMMM yyyy")}</span>;
+      },
+    },
+    {
+      title: "Nama Karyawan",
       dataIndex: ["karyawan", "nama"],
       key: "name",
     },
@@ -175,20 +183,12 @@ export default function ReportPayroll() {
       key: "name_jabatan",
     },
     {
-      title: "Tanggal Penggajian",
-      dataIndex: "tgl_penggajian",
-      key: "tgl_penggajian",
-      render: (_record, index) => {
-        return <span>{moment(_record).format("DD MMMM yyyy")}</span>;
-      },
-    },
-    {
-      title: "Total Tunjangan",
+      title: "Total Penerimaan Gaji",
       dataIndex: "total_tunjangan",
       key: "total_tunjangan",
     },
     {
-      title: "Total Pengurangan",
+      title: "Total Potongan Gaji",
       dataIndex: "total_pengurangan",
       key: "total_pengurangan",
     },
@@ -224,7 +224,7 @@ export default function ReportPayroll() {
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Cetak Slip",
       width: 100,
       render: (_, record, index) => {
         let check = record.id === clickButton;
@@ -280,7 +280,7 @@ export default function ReportPayroll() {
         <PageTitle pageTitle="Laporan Penggajian" />
         <Card style={{ marginTop: 20, width: "100%", padding: 10 }}>
           <Row gutter={[20]} style={{ marginBottom: 20 }}>
-            <Col span={12}>
+            <Col span={6}>
               <DatePicker.RangePicker
                 style={{
                   width: "100%",
@@ -325,7 +325,7 @@ export default function ReportPayroll() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari nama karyawan"
               />
             </Col>
           </Row>

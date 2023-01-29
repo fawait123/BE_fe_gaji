@@ -143,7 +143,7 @@ export default function EmployeeFamily() {
         (meta.page - 1) * meta.perPage + index + 1,
     },
     {
-      title: "Karyawan",
+      title: "Nama Karyawan",
       dataIndex: ["karyawan", "nama"],
       key: "name",
     },
@@ -153,7 +153,7 @@ export default function EmployeeFamily() {
       key: "name_jabatan",
     },
     {
-      title: "Nama",
+      title: "Nama Anggota Keluarga",
       dataIndex: "nama",
       key: "in",
     },
@@ -166,7 +166,7 @@ export default function EmployeeFamily() {
       },
     },
     {
-      title: "Jenis",
+      title: "Jenis Anggota Keluarga",
       dataIndex: "jenis",
       key: "remarks",
     },
@@ -174,7 +174,7 @@ export default function EmployeeFamily() {
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Aksi",
       width: 100,
       render: (_, record, index) => {
         return (
@@ -270,7 +270,7 @@ export default function EmployeeFamily() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari Nama Karyawan"
               />
             </Col>
           </Row>

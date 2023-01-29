@@ -26,7 +26,7 @@ export default function ModalComponent({
         title={`${record ? "Edit" : "Tambah"} Data Komponen`}
         visible={visible}
         style={{
-          marginTop: "-70px",
+          marginTop: "-10px",
         }}
         confirmLoading={loading}
         onCancel={onCancel}
@@ -34,7 +34,7 @@ export default function ModalComponent({
       >
         <div
           style={{
-            height: "calc(100vh - 300px)",
+            height: "calc(100vh - 800px)",
             overflowY: "scroll",
             overflowX: "hidden",
           }}
@@ -48,11 +48,11 @@ export default function ModalComponent({
                   rules={[
                     {
                       required: true,
-                      message: "Nama Komponen tidak boleh kosong",
+                      message: "Nama Komponen harus diisi",
                     },
                   ]}
                 >
-                  <Input placeholder="Nama Komponen" />
+                  <Input placeholder="Gaji Pokok" />
                 </Form.Item>
               </Col>
               <Col span={12}>
@@ -61,12 +61,12 @@ export default function ModalComponent({
                   rules={[
                     {
                       required: true,
-                      message: "Tipe tidak boleh kosong",
+                      message: "Tipe jabatan harus diisi",
                     },
                   ]}
-                  label="Tipe"
+                  label="Tipe Komponen"
                 >
-                  <Select placeholder="Pilih Tipe">
+                  <Select placeholder="Pilih tipe komponen">
                     <Select.Option value="Penambahan">Penambahan</Select.Option>
                     <Select.Option value="Pengurangan">
                       Pengurangan

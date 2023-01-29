@@ -39,11 +39,11 @@ export default function Login() {
     return <Redirect to="/" />;
   }
   return (
-    <Row gutter={[32, 0]} className="hp-authentication-page">
+    <Row gutter={[32, 0]} className="hp-authentication-page" style={{height:'100vh'}}>
       <LeftContent />
 
       <Col lg={12} span={24} className="hp-py-sm-0 hp-py-md-64">
-        <Row className="hp-h-100" align="middle" justify="center">
+        <Row className="hp-h-100" justify="center" style={{ paddingTop:"120px"}}>
           <Col
             xxl={11}
             xl={15}
@@ -52,10 +52,8 @@ export default function Login() {
             sm={24}
             className="hp-px-sm-8 hp-pt-24 hp-pb-48"
           >
-            <h1 className="hp-mb-sm-0">Login</h1>
-            <p className="hp-mt-sm-0 hp-mt-8 hp-text-color-black-60">
-              Welcome back, please login to your account.
-            </p>
+            <h1 className="hp-text-color-primary-1 hp-text-color-dark-0 hp-mx-lg-16 hp-mb-16"><b>SINDUADI HEBAT</b></h1>
+            <p><b>Cepat dan Cermat Dalam Melayani Masyarakat Sinduadi</b></p>
 
             <Form
               layout="vertical"
@@ -75,7 +73,7 @@ export default function Login() {
                   },
                 ]}
               >
-                <Input placeholder="Input Username" />
+                <Input placeholder="Masukan Username" />
               </Form.Item>
 
               <Form.Item
@@ -88,7 +86,7 @@ export default function Login() {
                   },
                 ]}
               >
-                <Input.Password placeholder="Input Password" />
+                <Input.Password placeholder="Masukan Password" />
               </Form.Item>
 
               {/* <Row align="middle" justify="space-between">
@@ -110,7 +108,7 @@ export default function Login() {
                   loading={loading}
                   onClick={handleSubmit}
                 >
-                  Sign in
+                  <b>LOGIN</b>
                 </Button>
               </Form.Item>
             </Form>

@@ -181,11 +181,6 @@ export default function Payroll() {
         meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
     },
     {
-      title: "Karyawan",
-      dataIndex: ["karyawan", "nama"],
-      key: "name",
-    },
-    {
       title: "Tanggal Penggajian",
       dataIndex: "tgl_penggajian",
       key: "tgl_penggajian",
@@ -195,12 +190,22 @@ export default function Payroll() {
       },
     },
     {
-      title: "Total Tunjangan",
+      title: "Nama Karyawan",
+      dataIndex: ["karyawan", "nama"],
+      key: "name",
+    },
+    {
+      title: "Jabatan",
+      dataIndex: ["karyawan", "jabatan", "nama"],
+      key: "name_jabatan",
+    },
+    {
+      title: "Total Penerimaan Gaji",
       dataIndex: "total_tunjangan",
       key: "total_tunjangan",
     },
     {
-      title: "Total Pengurangan",
+      title: "Total Potongan Gaji",
       dataIndex: "total_pengurangan",
       key: "total_pengurangan",
     },
@@ -273,21 +278,21 @@ export default function Payroll() {
         <Card style={{ marginTop: 20, width: "100%", padding: 10 }}>
           <Form layout="vertical" form={form}>
             <Row justify="start" gutter={[20]}>
-              <Col span={8}>
+              <Col span={4}>
                 <Form.Item
-                  label="Tanggal"
+                  label="Pilih Tanggal Penggajian"
                   name="tgl_penggajian"
                   rules={[
                     {
                       required: true,
-                      message: "Tanggal tidak boleh kosong",
+                      message: "Tanggal Penggajian harus diisi",
                     },
                   ]}
                 >
-                  <DatePicker style={{ width: "100%" }} />
+                  <DatePicker format={"DD-MM-YYYY"} style={{ width: "100%" }} />
                 </Form.Item>
               </Col>
-              <Col span={8}>
+              <Col span={6}>
                 <Form.Item label=" " name="button">
                   <Button type="primary" loading={loading} onClick={runPayroll}>
                     Jalankan Penggajian
@@ -311,7 +316,7 @@ export default function Payroll() {
                       }, 500);
                     }}
                     allowClear
-                    placeholder="Search"
+                    placeholder="Cari nama karyawan"
                   />
                 </Col>
               </Row>

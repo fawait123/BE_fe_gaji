@@ -58,74 +58,32 @@ export default function ModalEmployee({
                   <Input placeholder="ID Karyawan" />
                 </Form.Item>
               </Col> */}
-              <Col span={24}>
+              <Col span={23}>
                 <Form.Item
                   name="nama"
-                  label="Nama"
+                  label="Nama Karyawan"
                   rules={[
                     {
                       required: true,
-                      message: "Nama tidak boleh kosong",
+                      message: "Nama Karyawan harus diisi",
                     },
                   ]}
                 >
-                  <Input placeholder="Nama" />
-                </Form.Item>
-              </Col>
-              <Col span={24}>
-                <Form.Item
-                  name="no_sk"
-                  label="No SK"
-                  rules={[
-                    {
-                      required: true,
-                      message: "NO SK boleh kosong",
-                    },
-                  ]}
-                >
-                  <Input placeholder="NO SK" />
+                  <Input placeholder="H.Senen Haryanto, SE" />
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item
-                  name="no_rek"
-                  label="No Rekening"
-                  rules={[
-                    {
-                      required: true,
-                      message: "No Rekening boleh kosong",
-                    },
-                  ]}
-                >
-                  <Input placeholder="No Rekening" />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item
-                  name="nama_bank"
-                  label="Nama Bank"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Nama Bank boleh kosong",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Nama Bank" />
-                </Form.Item>
-              </Col>
-              <Col span={24}>
                 <Form.Item
                   name="jabatan_id"
                   label="Jabatan"
                   rules={[
                     {
                       required: true,
-                      message: "Jabatan tidak boleh kosong",
+                      message: "Jabatan harus diisi",
                     },
                   ]}
                 >
-                  <Select placeholder="Jabatan">
+                  <Select placeholder="Kaur Keuangan">
                     {state.dataJabatan.map((el) => {
                       return (
                         <Select.Option key={el.id} value={el.id}>
@@ -136,6 +94,48 @@ export default function ModalEmployee({
                   </Select>
                 </Form.Item>
               </Col>
+              <Col span={11}>
+                <Form.Item
+                  name="no_sk"
+                  label="No SK"
+                  rules={[
+                    {
+                      required: true,
+                      message: "NO SK harus diisi",
+                    },
+                  ]}
+                >
+                  <Input placeholder="6/Kep.KDH/A/2021" />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item
+                  name="no_rek"
+                  label="No Rekening"
+                  rules={[
+                    {
+                      required: true,
+                      message: "No Rekening harus diisi",
+                    },
+                  ]}
+                >
+                  <Input placeholder="001.2221.XXX" />
+                </Form.Item>
+              </Col>
+              <Col span={11}>
+                <Form.Item
+                  name="nama_bank"
+                  label="Nama Bank"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Nama Bank harus diisi",
+                    },
+                  ]}
+                >
+                  <Input placeholder="BPD-SLEMAN" />
+                </Form.Item>
+              </Col>
               <Col span={12}>
                 <Form.Item
                   name="jenis_kelamin"
@@ -143,7 +143,7 @@ export default function ModalEmployee({
                   rules={[
                     {
                       required: true,
-                      message: "Jenis tidak boleh kosong",
+                      message: "Jenis Kelamin harus diisi",
                     },
                   ]}
                 >
@@ -153,27 +153,27 @@ export default function ModalEmployee({
                   </Radio.Group>
                 </Form.Item>
               </Col>
-              <Col span={12}>
+              <Col span={11}>
                 <Form.Item
                   name="no_hp"
-                  label="No. HP"
+                  label="No HP"
                   required={true}
                   rules={[
                     {
                       validator: (rule, value, cb) => {
                         let values = value || null;
                         if (!values) {
-                          return cb("No. HP tidak boleh kosong");
+                          return cb("No HP harus diisi");
                         }
                         if (!Number(values)) {
-                          return cb("No. HP harus angka");
+                          return cb("No HP harus berupa angka");
                         }
                         return cb();
                       },
                     },
                   ]}
                 >
-                  <Input placeholder="No. HP" />
+                  <Input placeholder="08222398XXXX" />
                 </Form.Item>
               </Col>
               <Col span={12}>
@@ -183,21 +183,21 @@ export default function ModalEmployee({
                   rules={[
                     {
                       required: true,
-                      message: "Tgl Masuk Kerja tidak boleh kosong",
+                      message: "Tgl Masuk Kerja harus diisi",
                     },
                   ]}
                 >
                   <DatePicker format={"DD-MM-YYYY"} style={{ width: "100%" }} />
                 </Form.Item>
               </Col>
-              <Col span={12}>
+              <Col span={11}>
                 <Form.Item
                   name="tgl_lahir"
                   label="Tanggal Lahir"
                   rules={[
                     {
                       required: true,
-                      message: "Tanggal Lahir tidak boleh kosong",
+                      message: "Tanggal Lahir harus diisi",
                     },
                   ]}
                 >
@@ -250,21 +250,21 @@ export default function ModalEmployee({
                   <Input placeholder="Jumlah Anak" />
                 </Form.Item>
               </Col> */}
-              <Col span={24}>
+              <Col span={23}>
                 <Form.Item
                   name="alamat"
-                  label="Alamat"
+                  label="Alamat Lengkap"
                   rules={[
                     {
                       required: true,
-                      message: "Alamat tidak boleh kosong",
+                      message: "Alamat Lengkap harus diisi",
                     },
                   ]}
                 >
-                  <Input.TextArea rows={3} placeholder="Alamat" />
+                  <Input.TextArea rows={3} placeholder="Jl.Magelang No.Km.4,5, Rogoyudan, Sinduadi, Kec. Mlati Kabupaten Sleman, Daerah Istimewa Yogyakarta 55284" />
                 </Form.Item>
               </Col>
-              <Col span={24}>
+              <Col span={23}>
                 <div
                   style={{
                     position: "relative",
@@ -295,11 +295,10 @@ export default function ModalEmployee({
                           <IconUpload style={{ width: 50 }} set="curved" />
                         </p>
                         <p className="ant-upload-text">
-                          Click or drag file to this area to upload
+                          klik atau seret foto pada bidang ini 
                         </p>
                         <p className="ant-upload-hint">
-                          Support for a single or bulk upload. Strictly prohibit
-                          from uploading company data or other band files
+                          uploud foto maksimal 10MB/file (png,jpg&jpeg)
                         </p>
                       </>
                     )}

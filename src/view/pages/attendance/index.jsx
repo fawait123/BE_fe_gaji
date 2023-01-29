@@ -145,7 +145,15 @@ export default function Attendance() {
         meta?.page > 1 ? index + 1 + meta?.perPage : index + 1,
     },
     {
-      title: "Nama",
+      title: "Tanggal Absen",
+      dataIndex: "tgl_absen",
+      key: "tgl_absen",
+      render: (_, record) => {
+        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+      },
+    },
+    {
+      title: "Nama Karyawan",
       dataIndex: ["karyawan", "nama"],
       key: "name",
     },
@@ -153,14 +161,6 @@ export default function Attendance() {
       title: "Jabatan",
       dataIndex: ["karyawan", "jabatan", "nama"],
       key: "name_jabatan",
-    },
-    {
-      title: "Tanggal Absen",
-      dataIndex: "tgl_absen",
-      key: "tgl_absen",
-      render: (_, record) => {
-        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
-      },
     },
     {
       title: "Jam Masuk",
@@ -186,7 +186,7 @@ export default function Attendance() {
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Aksi",
       width: 100,
       render: (_, record, index) => {
         return (
@@ -278,7 +278,7 @@ export default function Attendance() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari Nama Karyawan"
               />
             </Col>
           </Row>

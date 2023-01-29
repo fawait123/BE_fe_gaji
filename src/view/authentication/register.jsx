@@ -23,7 +23,7 @@ export default function SignUp() {
       <LeftContent />
 
       <Col md={12}>
-        <Row className="hp-h-100" align="middle" justify="center">
+        <Row className="hp-h-100" align="start" justify="center">
           <Col
             xxl={11}
             xl={15}
