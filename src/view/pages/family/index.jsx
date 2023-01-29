@@ -278,6 +278,7 @@ export default function EmployeeFamily() {
             columns={columns}
             dataSource={data}
             onChange={(pagination, filters, sorter) => {
+              getEmployee();
               setMeta({
                 ...meta,
                 page: pagination.current,

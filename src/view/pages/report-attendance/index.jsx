@@ -257,13 +257,14 @@ export default function ReportAttendance() {
           <Row gutter={[20]} style={{ marginBottom: 20 }}>
             <Col span={6}>
               <DatePicker.RangePicker
+                format={"DD-MM-YYYY"}
                 style={{
                   width: "100%",
                 }}
                 onChange={(e) => {
                   console.log(e);
                   let start_date, end_date;
-                  e.map((item, index) => {
+                  e?.map((item, index) => {
                     if (index === 0) {
                       start_date = moment(item).format("YYYY-MM-DD");
                     } else {

@@ -203,16 +203,31 @@ export default function Payroll() {
       title: "Total Penerimaan Gaji",
       dataIndex: "total_tunjangan",
       key: "total_tunjangan",
+      render: (_record, _) => {
+        return parseInt(_record).toLocaleString("id-ID", {
+          minimumFractionDigits: 2,
+        });
+      },
     },
     {
       title: "Total Potongan Gaji",
       dataIndex: "total_pengurangan",
       key: "total_pengurangan",
+      render: (_record, _) => {
+        return parseInt(_record).toLocaleString("id-ID", {
+          minimumFractionDigits: 2,
+        });
+      },
     },
     {
       title: "Total Gaji",
       dataIndex: "total_gaji",
       key: "total_gaji",
+      render: (_record, _) => {
+        return parseInt(_record).toLocaleString("id-ID", {
+          minimumFractionDigits: 2,
+        });
+      },
     },
   ];
   const columns = [
