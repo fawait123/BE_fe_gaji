@@ -148,8 +148,8 @@ export default function Attendance() {
       title: "Tanggal Absen",
       dataIndex: "tgl_absen",
       key: "tgl_absen",
-      render: (_, record) => {
-        return <span>{moment(record).format("DD MMMM yyyy")}</span>;
+      render: (_record, _) => {
+        return <span>{moment(_record).format("DD MMMM yyyy")}</span>;
       },
     },
     {

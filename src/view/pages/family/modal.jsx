@@ -9,7 +9,11 @@ import {
   Select,
   TimePicker,
 } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import httpRequest from "@/utils/axios";
+
+const endpointKaryawan = "api/karyawan";
 
 export default function ModalFamily({
   form,
@@ -20,6 +24,7 @@ export default function ModalFamily({
   visible,
   state,
 }) {
+  const [dataEmployee, setDataEmployee] = useState([]);
   const dataJenis = [
     {
       id: 1,
@@ -37,6 +42,27 @@ export default function ModalFamily({
       display: "Suami",
     },
   ];
+  const getEmployee = async () => {
+    // setLoadingAdd(true)
+    await httpRequest({
+      url: endpointKaryawan,
+      method: "get",
+      params: {
+        page: 1,
+        perPage: 100000,
+      },
+    })
+      .then((response) => {
+        setDataEmployee(response?.data?.results);
+        // setVisible(true)
+      })
+      .finally(() => {
+        // setLoadingAdd(false)
+      });
+  };
+  useEffect(() => {
+    getEmployee();
+  });
   return (
     <>
       <Modal
@@ -70,7 +96,7 @@ export default function ModalFamily({
                   ]}
                 >
                   <Select placeholder="Pilih Karyawan" allowClear>
-                    {state.dataEmployee.map((el, _index) => {
+                    {dataEmployee.map((el, _index) => {
                       return (
                         <Select.Option value={el.id} key={_index}>
                           {el.nama}
