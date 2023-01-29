@@ -36,14 +36,14 @@ export default function ModalEmployee({
       >
         <div
           style={{
-            height: "calc(100vh - 300px)",
+            height: "calc(100vh - 380px)",
             overflowY: "scroll",
             overflowX: "hidden",
           }}
         >
           <Form form={form} layout="vertical">
             <Row gutter={[20, 20]}>
-              <Col span={24}>
+              <Col span={23}>
                 <div
                   style={{
                     position: "relative",
@@ -74,11 +74,10 @@ export default function ModalEmployee({
                           <IconUpload style={{ width: 50 }} set="curved" />
                         </p>
                         <p className="ant-upload-text">
-                          Click or drag file to this area to upload
+                          klik atau seret foto pada bidang ini
                         </p>
                         <p className="ant-upload-hint">
-                          Support for a single or bulk upload. Strictly prohibit
-                          from uploading company data or other band files
+                          uploud foto maksimal 10MB/file (png,jpg&jpeg)
                         </p>
                       </>
                     )}
@@ -118,53 +117,21 @@ export default function ModalEmployee({
                   <Input placeholder="Nama" />
                 </Form.Item>
               </Col> */}
-              <Col span={12}>
+              <Col span={23}>
                 <Form.Item
                   name="username"
                   label="Username"
                   rules={[
                     {
                       required: true,
-                      message: "Username tidak boleh kosong",
+                      message: "Username harus diisi",
                     },
                   ]}
                 >
-                  <Input placeholder="Username" />
+                  <Input placeholder="Agus Sudarmana" />
                 </Form.Item>
               </Col>
-              <Col span={12}>
-                <Form.Item
-                  name="email"
-                  label="Email"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Email tidak boleh kosong",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Email" />
-                </Form.Item>
-              </Col>
-              <Col span={24}>
-                <Form.Item
-                  name="role"
-                  label="Role"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Role tidak boleh kosong",
-                    },
-                  ]}
-                >
-                  <Select placeholder="Select Role">
-                    <Select.Option value="admin">Admin</Select.Option>
-                    <Select.Option value="staff">Staff Kelurahan</Select.Option>
-                    <Select.Option value="lurah">Lurah</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-              <Col span={24}>
+              <Col span={23}>
                 <Form.Item
                   name="password"
                   label="Password"
@@ -174,12 +141,44 @@ export default function ModalEmployee({
                       : [
                           {
                             required: true,
-                            message: "Password tidak boleh kosong",
+                            message: "Password harus diisi",
                           },
                         ]
                   }
                 >
-                  <Input.Password placeholder="Password" />
+                  <Input.Password placeholder="Masukan password" />
+                </Form.Item>
+              </Col>
+              <Col span={13}>
+                <Form.Item
+                  name="email"
+                  label="Email"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Email harus diisi",
+                    },
+                  ]}
+                >
+                  <Input placeholder="Agussud828@gmail.com" />
+                </Form.Item>
+              </Col>
+              <Col span={10}>
+                <Form.Item
+                  name="role"
+                  label="Role Pengguna"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Role harus diisi",
+                    },
+                  ]}
+                >
+                  <Select placeholder="Pilih role pengguna">
+                    <Select.Option value="admin">Admin</Select.Option>
+                    <Select.Option value="staff">Staff Kalurahan</Select.Option>
+                    <Select.Option value="lurah">Lurah</Select.Option>
+                  </Select>
                 </Form.Item>
               </Col>
             </Row>

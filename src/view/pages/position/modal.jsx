@@ -44,7 +44,7 @@ export default function ModalPosition({
                     required: true,
                     message: `Nama ${
                       state.type === "jabatan" ? "Jabatan" : "Komponen"
-                    } tidak boleh kosong`,
+                    } harus diisi`,
                   },
                 ]}
               >
@@ -59,16 +59,16 @@ export default function ModalPosition({
             <Col span={12}>
               <Form.Item
                 name="tipe"
-                label="Tipe"
+                label="Tpe Jabatan"
                 rules={[
                   {
                     required: true,
-                    message: "Tipe tidak boleh kosong",
+                    message: "Tipe Jabatan harus diisi",
                   },
                 ]}
               >
                 {state.type === "jabatan" ? (
-                  <Select placeholder="Pilih Tipe">
+                  <Select placeholder="Pilih tipe jabatan">
                     <Select.Option value="Pamong">Pamong</Select.Option>
                     <Select.Option value="Staff">Staff Kelurahan</Select.Option>
                     <Select.Option value="Honorer">Honorer</Select.Option>

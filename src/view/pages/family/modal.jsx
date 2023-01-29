@@ -51,21 +51,21 @@ export default function ModalFamily({
       >
         <div
           style={{
-            height: "calc(100vh - 300px)",
+            height: "calc(100vh - 550px)",
             overflowY: "scroll",
             overflowX: "hidden",
           }}
         >
           <Form form={form} layout="vertical">
             <Row gutter={[20, 20]}>
-              <Col span={12}>
+              <Col span={23}>
                 <Form.Item
                   name="karyawan_id"
                   label="Nama Karyawan"
                   rules={[
                     {
                       required: true,
-                      message: "Nama Karyawan tidak boleh kosong",
+                      message: "Nama Karyawan harus diisi",
                     },
                   ]}
                 >
@@ -80,32 +80,32 @@ export default function ModalFamily({
                   </Select>
                 </Form.Item>
               </Col>
-              <Col span={12}>
+              <Col span={23}>
                 <Form.Item
                   name="nama"
-                  label="Nama Keluarga"
+                  label="Nama Anggota Keluarga"
                   rules={[
                     {
                       required: true,
-                      message: "Nama Keluarga tidak boleh kosong",
+                      message: "Nama Anggota Keluarga harus diisi",
                     },
                   ]}
                 >
-                  <Input placeholder="Nama Keluarga" />
+                  <Input placeholder="Sri Surahmi" />
                 </Form.Item>
               </Col>
-              <Col span={12}>
+              <Col span={11}>
                 <Form.Item
                   name="jenis"
-                  label="Jenis"
+                  label="Jenis Keluarga"
                   rules={[
                     {
                       required: true,
-                      message: "Jenis tidak boleh kosong",
+                      message: "Jenis keluarga harus diisi",
                     },
                   ]}
                 >
-                  <Select placeholder="Jenis">
+                  <Select placeholder="Pilih jenis keluarga">
                     {dataJenis.map((el, _index) => {
                       return (
                         <Select.Option key={_index} value={el.nama}>

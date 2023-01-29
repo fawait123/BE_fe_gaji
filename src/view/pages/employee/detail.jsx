@@ -52,7 +52,7 @@ const Detail = () => {
           </Row>
         </Col>
 
-        <PageTitle pageTitle="Data Karyawan" />
+        <PageTitle pageTitle="Detail Data Karyawan" />
         <Card style={{ marginTop: 20, width: "100%", padding: 10 }}>
           {antLoading ? (
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -71,23 +71,23 @@ const Detail = () => {
                   />
                 </Col>
               </Row>
-              <Divider orientation="left">Detail Karyawan</Divider>
+              <Divider orientation="left">Data Identitas Karyawan</Divider>
               <List
                 bordered
                 dataSource={data}
                 renderItem={(item) => (
                   <List.Item>
                     <div style={{ display: "flex" }}>
-                      <div style={{ marginRight: 120 }}>
+                      <div style={{ marginRight: 25 }}>
                         <p>NO SK</p>
-                        <p>Nama</p>
+                        <p>Nama Karyawan</p>
                         <p>Jenis Kelamin</p>
-                        <p>Tanggal Lahir</p>
+                        <p>Tanggal Lahir / Umur</p>
                         <p>Jabatan</p>
                         <p>NO HP</p>
                         <p>Bank / NO Rekening</p>
-                        <p>Tanggal Masuk Kerja</p>
-                        <p>Alamat</p>
+                        <p>Tanggal Masuk Kerja / Lama Bekerja</p>
+                        <p>Alamat Lengkap</p>
                       </div>
                       <div>
                         <p>: {item.no_sk}</p>
@@ -129,10 +129,10 @@ const Detail = () => {
                     return (
                       <List.Item>
                         <div style={{ display: "flex" }}>
-                          <div style={{ marginRight: 120 }}>
-                            <p>Nama</p>
+                          <div style={{ marginRight: 95 }}>
+                            <p>Nama Keluarga</p>
                             <p>Tanggal Lahir</p>
-                            <p>Jenis</p>
+                            <p>Jenis Anggota Keluarga</p>
                             <p>Umur</p>
                           </div>
                           <div>

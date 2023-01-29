@@ -175,25 +175,27 @@ export default function Employee() {
     //   key: "nama",
     // },
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Role",
-      dataIndex: "role",
-      key: "role",
-    },
-    {
       title: "Username",
       dataIndex: "username",
       key: "username",
     },
+    {
+      title: "Nama Role",
+      dataIndex: "role",
+      key: "role",
+    },
+    { 
+      title: "Email Pengguna",
+      dataIndex: "email",
+      key: "email",
+    },
+   
+    
   ];
   const columns = [
     ...fieldColumns,
     {
-      title: "#",
+      title: "Aksi",
       width: 100,
       render: (_, record, index) => {
         return (
@@ -293,7 +295,7 @@ export default function Employee() {
                   }, 500);
                 }}
                 allowClear
-                placeholder="Search"
+                placeholder="Cari nama pengguna"
               />
             </Col>
           </Row>
