@@ -45,10 +45,11 @@ export default function Attendance() {
       method: "get",
       params: {
         ...meta,
-        perPage: 10,
+        perPage: 12,
       },
     })
       .then((response) => {
+        console.log("response", response);
         setTotal(response?.data?.meta?.total);
         setData(response?.data?.results);
       })
@@ -77,9 +78,9 @@ export default function Attendance() {
   };
 
   useEffect(() => {
-    getEmployee();
+    // getEmployee();
     getData();
-  }, [meta]);
+  }, []);
 
   const onOk = () => {
     form.validateFields().then(async (res) => {
@@ -286,16 +287,18 @@ export default function Attendance() {
             columns={columns}
             dataSource={data}
             onChange={(pagination, filters, sorter) => {
+              console.log("pagination", pagination);
               setMeta({
                 ...meta,
                 page: pagination.current,
                 perPage: pagination.pageSize,
               });
+              getData();
             }}
             pagination={{
               current: meta.page,
-              total,
               pageSize: meta.perPage,
+              total,
             }}
             loading={antLoading}
             scroll={{
