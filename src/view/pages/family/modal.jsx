@@ -62,7 +62,7 @@ export default function ModalFamily({
   };
   useEffect(() => {
     getEmployee();
-  });
+  }, []);
   return (
     <>
       <Modal

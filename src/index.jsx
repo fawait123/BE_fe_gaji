@@ -1,23 +1,26 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from "react";
 
-import { BrowserRouter } from 'react-router-dom'
-import ReactDOM from 'react-dom'
+import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom";
 
-import { Provider } from 'react-redux'
-import store from './redux/store'
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { ToastContainer } from "react-toastify";
 
-import './assets/icons/remixicon.css'
-import './assets/less/yoda-theme.less'
+import "react-toastify/dist/ReactToastify.css";
+import "./assets/icons/remixicon.css";
+import "./assets/less/yoda-theme.less";
 
-import App from './App'
+import App from "./App";
 
 ReactDOM.render(
   <Suspense fallback="loading">
     <Provider store={store}>
       <BrowserRouter>
         <App />
+        <ToastContainer />
       </BrowserRouter>
     </Provider>
   </Suspense>,
-  document.getElementById('root'),
-)
+  document.getElementById("root")
+);
