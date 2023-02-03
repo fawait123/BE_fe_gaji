@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Breadcrumbs from "@/layout/components/content/breadcrumbs";
 import PageTitle from "@/layout/components/content/page-title";
-import { Button, Card, Col, Form, Input, notification, Row, Table } from "antd";
-import { Delete, Edit, TickSquare } from "react-iconly";
+import { Button, Card, Col, Form, Input, Row, Table } from "antd";
+import { Delete, Edit } from "react-iconly";
 import ModalEmployee from "./modal";
 import ModalDelete from "@/view/components/delete-modal";
-import httpRequest from "@/utils/axios";
 import moment from "moment";
-import axios from "axios";
-import Config from "../../../utils/config";
+import httpRequest from "../../../utils/axios";
 
 const endpoint = "api/pengguna";
 
@@ -63,26 +61,12 @@ export default function Employee() {
     getData();
   }, [meta]);
 
-  const onOk = async () => {
-    form.validateFields().then(async (res) => {
+  const onOk = () => {
+    form.validateFields().then((res) => {
       setLoading(true);
-      // await httpRequest({
-      //   url: endpoint,
-      //   method: record ? "put" : "post",
-      //   data: {
-      //     ...res,
-      //     foto: baseUrl.url,
-      //   },
-      //   params: {
-      //     id: record ? record.id : undefined,
-      //   },
-      // })
-      await axios({
-        url: Config.baseURL + endpoint,
+      httpRequest({
+        url: endpoint,
         method: record ? "put" : "post",
-        headers: {
-          Authorization: "Bearer " + window.localStorage.getItem("token"),
-        },
         data: {
           ...res,
           foto: baseUrl.url,
@@ -92,6 +76,7 @@ export default function Employee() {
         },
       })
         .then((response) => {
+          console.log("response", response);
           setVisible(false);
           form.resetFields();
           setRecord(null);
@@ -102,12 +87,6 @@ export default function Employee() {
             fileList: [],
           });
           setLoading(false);
-          console.log(response?.data?.message);
-          notification.success({
-            message: "Success",
-            description: response.data.message,
-            icon: <TickSquare set="curved" className="remix-icon" />,
-          });
         })
         .catch((error) => {
           form.resetFields();
@@ -131,19 +110,9 @@ export default function Employee() {
 
   const handleDelete = async () => {
     setLoadingDelete(true);
-    // await httpRequest({
-    //   url: endpoint,
-    //   method: "delete",
-    //   params: {
-    //     id: record?.id,
-    //   },
-    // })
-    await axios({
-      url: Config.baseURL + endpoint,
+    await httpRequest({
+      url: endpoint,
       method: "delete",
-      headers: {
-        Authorization: "Bearer " + window.localStorage.getItem("token"),
-      },
       params: {
         id: record?.id,
       },
@@ -151,11 +120,6 @@ export default function Employee() {
       .then((res) => {
         getData();
         setVisibleDelete(false);
-        notification.success({
-          message: "Success",
-          description: res.data.message,
-          icon: <TickSquare set="curved" className="remix-icon" />,
-        });
       })
       .finally(() => {
         setLoadingDelete(false);
@@ -184,13 +148,11 @@ export default function Employee() {
       dataIndex: "role",
       key: "role",
     },
-    { 
+    {
       title: "Email Pengguna",
       dataIndex: "email",
       key: "email",
     },
-   
-    
   ];
   const columns = [
     ...fieldColumns,
