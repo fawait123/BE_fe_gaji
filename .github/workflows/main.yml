@@ -27,10 +27,10 @@ jobs:
           CI: false
 
       # Runs a set of commands using the runners shell
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - name: FTP Deployment
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: build/
