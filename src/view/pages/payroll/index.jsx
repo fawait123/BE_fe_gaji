@@ -9,7 +9,7 @@ import axios from "axios";
 import moment from "moment";
 import Config from "../../../utils/config";
 
-const endpoint = Config.baseURL + "api/run-payroll";
+const endpoint = "api/run-payroll";
 const endpointList = "api/kelola-gaji";
 const endpointKaryawan = "api/karyawan";
 
@@ -145,9 +145,14 @@ export default function Payroll() {
       setLoading(true);
       setShowTable(false);
 
-      await axios({
-        method: "post",
+      // await axios({
+      //   method: "post",
+      //   url: endpoint,
+      //   data: result,
+      // })
+      await httpRequest({
         url: endpoint,
+        method: "post",
         data: result,
       })
         .then((result) => {
