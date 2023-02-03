@@ -38,15 +38,13 @@ export default function Attendance() {
     dataEmployee,
   };
 
-  const getData = async () => {
+  const getData = async (payload) => {
     setAntLoading(true);
+    console.log("pagi", meta);
     await httpRequest({
       url: endpoint,
       method: "get",
-      params: {
-        ...meta,
-        perPage: 12,
-      },
+      params: payload,
     })
       .then((response) => {
         console.log("response", response);
@@ -79,7 +77,7 @@ export default function Attendance() {
 
   useEffect(() => {
     // getEmployee();
-    getData();
+    getData(meta);
   }, []);
 
   const onOk = () => {
@@ -102,7 +100,7 @@ export default function Attendance() {
           setVisible(false);
           form.resetFields();
           setRecord(null);
-          getData();
+          getData(meta);
         })
         .catch((error) => {
           form.resetFields();
@@ -131,7 +129,7 @@ export default function Attendance() {
       },
     })
       .then((res) => {
-        getData();
+        getData(meta);
         setVisibleDelete(false);
       })
       .finally(() => {
@@ -293,7 +291,12 @@ export default function Attendance() {
                 page: pagination.current,
                 perPage: pagination.pageSize,
               });
-              getData();
+              const data = {
+                ...meta,
+                page: pagination.current,
+                perPage: pagination.pageSize,
+              };
+              getData(data);
             }}
             pagination={{
               current: meta.page,
