@@ -10,6 +10,9 @@ import {
   TimePicker,
 } from "antd";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import httpRequest from "@/utils/axios";
 
 export default function ModalAttendance({
   form,
@@ -21,6 +24,7 @@ export default function ModalAttendance({
   state,
 }) {
   const [dataEmployee, setDataEmployee] = useState([]);
+  const endpointKaryawan = "api/karyawan";
   const dataKehadiran = [
     {
       id: 1,
