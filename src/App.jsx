@@ -1,11 +1,8 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-
 import { ConfigProvider } from "antd";
 import { IntlProvider } from "react-intl";
-
 import AppLocale from "./languages";
-
 import Router from "./router/Router";
 import { useLocation, useHistory, Redirect } from "react-router-dom";
 
