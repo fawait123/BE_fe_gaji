@@ -20,6 +20,7 @@ export default function ModalAttendance({
   visible,
   state,
 }) {
+  const [dataEmployee, setDataEmployee] = useState([]);
   const dataKehadiran = [
     {
       id: 1,
@@ -38,6 +39,27 @@ export default function ModalAttendance({
       nama: "Alpha",
     },
   ];
+  const getEmployee = async () => {
+    // setLoadingAdd(true)
+    await httpRequest({
+      url: endpointKaryawan,
+      method: "get",
+      params: {
+        page: 1,
+        perPage: 100000,
+      },
+    })
+      .then((response) => {
+        setDataEmployee(response?.data?.results);
+        // setVisible(true)
+      })
+      .finally(() => {
+        // setLoadingAdd(false)
+      });
+  };
+  useEffect(() => {
+    getEmployee();
+  }, []);
   return (
     <>
       <Modal
@@ -59,7 +81,7 @@ export default function ModalAttendance({
         >
           <Form form={form} layout="vertical">
             <Row gutter={[20, 20]}>
-            <Col span={11}>
+              <Col span={11}>
                 <Form.Item
                   name="karyawan_id"
                   label="Nama Karyawan"
@@ -71,7 +93,7 @@ export default function ModalAttendance({
                   ]}
                 >
                   <Select placeholder="Pilih nama karyawan" allowClear>
-                    {state.dataEmployee.map((el) => {
+                    {dataEmployee.map((el) => {
                       return (
                         <Select.Option value={el.id} key={el.id}>
                           {el.nama}
@@ -81,7 +103,7 @@ export default function ModalAttendance({
                   </Select>
                 </Form.Item>
               </Col>
-            <Col span={12}>
+              <Col span={12}>
                 <Form.Item
                   name="tgl_absen"
                   label="Tanggal Absensi"
@@ -114,7 +136,7 @@ export default function ModalAttendance({
                   <TimePicker style={{ width: "100%" }} />
                 </Form.Item>
               </Col>
-              
+
               <Col span={12}>
                 <Form.Item
                   name="jam_pulang"
@@ -129,7 +151,6 @@ export default function ModalAttendance({
                   <TimePicker style={{ width: "100%" }} />
                 </Form.Item>
               </Col>
-              
 
               <Col span={23}>
                 <Form.Item
@@ -154,10 +175,11 @@ export default function ModalAttendance({
                 </Form.Item>
               </Col>
               <Col span={23}>
-                <Form.Item 
-                name="keterangan" 
-                label="Keterangan Absensi">
-                  <Input.TextArea rows={3} placeholder="Keterangan status kehadiran karyawan" />
+                <Form.Item name="keterangan" label="Keterangan Absensi">
+                  <Input.TextArea
+                    rows={3}
+                    placeholder="Keterangan status kehadiran karyawan"
+                  />
                 </Form.Item>
               </Col>
             </Row>
