@@ -235,7 +235,7 @@ export default function Employee() {
                   ...record,
                   jabatan_id: parseInt(record.jabatan_id),
                   tgl_lahir: moment(record.tgl_lahir),
-                  tgl_masuk_kerja: moment(record.tgl_masuk),
+                  tgl_masuk_kerja: moment(record.tgl_masuk_kerja),
                 });
               }}
             />
