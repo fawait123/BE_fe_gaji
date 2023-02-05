@@ -268,15 +268,16 @@ export default function Attendance() {
             </Col>
             <Col>
               <Input
-                onChange={(e) => {
-                  setTimeout(() => {
-                    setMeta({
-                      ...meta,
-                      search: e.target.value,
-                    });
-                  }, 500);
+                onKeyUp={(e) => {
+                  setMeta({
+                    ...meta,
+                    search: e.target.value,
+                  });
+                  let data = {
+                    ...meta,
+                  };
+                  getData(data);
                 }}
-                allowClear
                 placeholder="Cari Nama Karyawan"
               />
             </Col>
