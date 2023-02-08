@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Breadcrumbs from "@/layout/components/content/breadcrumbs";
 import httpRequest from "@/utils/axios";
 import PageTitle from "@/layout/components/content/page-title";
+import { toast } from "react-toastify";
 import {
   Button,
   Card,
@@ -139,8 +140,16 @@ export default function SetupComponent() {
           <>
             <Input
               style={{ width: "100%" }}
+              key={index}
+              validateTrigger={["onChange", "onBlur"]}
               status={Number(record.nominal) ? null : "error"}
               value={record.nominal}
+              rules={[
+                {
+                  required: true,
+                  message: "Input wajib di isi",
+                },
+              ]}
               disabled={
                 record?.nama?.toLowerCase().includes("kinerja") ||
                 record?.nama?.toLowerCase().includes("pph 21 tunj jabatan") ||
@@ -221,45 +230,59 @@ export default function SetupComponent() {
   };
 
   const handleSubmit = async () => {
-    setLoadingButton(true);
-    let payload = {
-      ...dataForm,
-      jabatan_id: jabatan,
-      penambahan: changeValue
-        .filter((el) => el.tipe === "Penambahan")
-        .map((el) => {
-          return {
-            id: el.id_table,
-            komponen_id: el.id,
-            jumlah: parseInt(el.nominal),
-          };
-        }),
-      pengurangan: changeValue
-        .filter((el) => el.tipe === "Pengurangan")
-        .map((el) => {
-          return {
-            id: el.id_table,
-            komponen_id: el.id,
-            jumlah: parseInt(el.nominal),
-          };
-        }),
-    };
-    setLoadingAdd(true);
-    await httpRequest({
-      url: endpointGaji,
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: payload,
-    })
-      .then((response) => {
-        push("/pages/position");
-      })
-      .finally(() => {
-        setLoadingButton(false);
-        setLoadingAdd(false);
+    let checkValueIsNan = changeValue.filter((el) => isNaN(el.nominal));
+    let checkValueIsEmpty = changeValue.filter(
+      (el) => el.nominal === "" || el.nominal === null
+    );
+    if (checkValueIsNan.length > 0) {
+      checkValueIsNan.map((el) => {
+        toast("Input " + el.nama + " harus angka");
       });
+    } else if (checkValueIsEmpty.length > 0) {
+      checkValueIsEmpty.map((el) => {
+        toast("Input " + el.nama + " tidak boleh kosong");
+      });
+    } else {
+      setLoadingButton(true);
+      let payload = {
+        ...dataForm,
+        jabatan_id: jabatan,
+        penambahan: changeValue
+          .filter((el) => el.tipe === "Penambahan")
+          .map((el) => {
+            return {
+              id: el.id_table,
+              komponen_id: el.id,
+              jumlah: parseInt(el.nominal),
+            };
+          }),
+        pengurangan: changeValue
+          .filter((el) => el.tipe === "Pengurangan")
+          .map((el) => {
+            return {
+              id: el.id_table,
+              komponen_id: el.id,
+              jumlah: parseInt(el.nominal),
+            };
+          }),
+      };
+      setLoadingAdd(true);
+      await httpRequest({
+        url: endpointGaji,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: payload,
+      })
+        .then((response) => {
+          push("/pages/position");
+        })
+        .finally(() => {
+          setLoadingButton(false);
+          setLoadingAdd(false);
+        });
+    }
   };
 
   return (
